@@ -33,7 +33,7 @@ void pdfReportHelper::newPDF(QPdfWriter &pdfWr,
     int hGraph=62;
     double tableHeight;
     int p1Padding = 5;
-    QRect limitRectangle(p1Padding*mm2pp,(hHeight+p1Padding)*mm2pp,80*mm2pp,65*mm2pp);
+    QRect limitRectangle(p1Padding*mm2pp,(hHeight+p1Padding)*mm2pp,200*mm2pp,65*mm2pp);
     QFont font = painter.font();
     font.setPointSize(11);
     painter.setFont(font);
@@ -42,13 +42,13 @@ void pdfReportHelper::newPDF(QPdfWriter &pdfWr,
     int itemsPerPage = 3;
     int space;
 
-    int ymm = hHeight+simpleList.size()*10;
+    int ymm = hHeight+simpleList.size()*15;
 
     for(int i=0;i<info.first.length();i++, item++){
         if(item%itemsPerPage == 0){
             newPage(pdfWr);
             if(page == 0){
-                itemsPerPage = 3;
+                itemsPerPage = 1;
                 item = 0;
                 space = 0;
                 drawSimpleList(simpleList, limitRectangle);
@@ -235,14 +235,23 @@ void pdfReportHelper::drawSimpleList(QStringList simpleList, QRect limitRectangl
     QString textAux = "<table cellspacing=\"32\">"; //Contiene la lista configurada en HTML
     for(int i=0;i<simpleList.size();i++){ //Insertar cada linea a la lista
         QStringList splited=simpleList[i].split("|");
-        textAux += "<tr>";
-        textAux += "<td style=\"text-align:right\"><b>" + splited.at(0) + "</b></td>";
-        if(splited.at(0).compare("&nbsp;") != 0)
-            textAux += "<td>:</td>";
-        else
-            textAux += "<td>&nbsp;</td>";
-        textAux += "<td>" + splited.at(1) + "</td>";
-        textAux += "</tr>";
+        if(splited.length() == 1){
+            textAux += "<tr>";
+            textAux += "<td></td>";
+            textAux += "<td></td>";
+            textAux += "<td>"+splited.at(0)+"</td>";
+            textAux += "</tr>";
+        }
+        else{
+            textAux += "<tr>";
+            textAux += "<td style=\"text-align:right\"><b>" + splited.at(0) + "</b></td>";
+            if(splited.at(0).compare("&nbsp;") != 0)
+                textAux += "<td>:</td>";
+            else
+                textAux += "<td>&nbsp;</td>";
+            textAux += "<td>" + splited.at(1) + "</td>";
+            textAux += "</tr>";
+        }
     }
     textAux += "</table>";
     QStaticText text; //Static text esta pensado para texto estatico, pero permite la interpretacion como html y por eso lo usamos aquí
@@ -375,4 +384,3 @@ void pdfReportHelper::drawFooterSimple(QPdfWriter& pdfWr){
                      Qt::AlignRight | Qt::AlignVCenter | Qt::TextWordWrap, QString::number(currentPageNumber));
 
 }
-

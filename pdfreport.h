@@ -26,6 +26,7 @@
  *
  */
 
+
 #ifndef PDFREPORT_H
 #define PDFREPORT_H
 
@@ -55,13 +56,20 @@
 #include <bsoncxx/document/value.hpp>
 #include <bsoncxx/document/view.hpp>
 
+#include "aurajson.h"
+
+
+
+
 using bsoncxx::builder::stream::document;
 using bsoncxx::builder::stream::finalize;
+
 
 class pdfreport : public QObject
 {
     Q_OBJECT
 private:
+
     QPair<QString, QStringList> m_items;
 
     QVector<QPair<QString, QStringList>> m_testsParams;
@@ -69,11 +77,13 @@ private:
     QString m_mongoUrl;
     unsigned int m_mongoPort;
 
-    QDialog *dialogLogo; ///< Puntero al cuadro de diálogo que se muestra antes de imprimir el reporte
+
+    QDialog * dialogLogo; ///< Puntero al cuadro de diálogo que se muestra antes de imprimir el reporte
     //Oscann 3.0.3
     mongocxx::database m_dbDatos;
     mongocxx::database m_dbTests;
     mongocxx::client m_client;
+
 
     QVector<QPixmap> m_graps;
     QString m_patient;
@@ -82,16 +92,20 @@ private:
 
     QStringList m_allParams;
 
+
     QPixmap getImage(const unsigned int mode, const QString testName);
     QPair<QVector<QPixmap>, QPair<QVector<QStringList>, QVector<QStringList>>> getGraphsAndTables(const QString pathology, const QString patient, QString reference);
     QString validateDBElement(bsoncxx::document::element l);
     QString m_date;
+    QString ImprimeInformeControl(int patologia_estudiada, int resultado);
+    QString ImprimeInformeDiferencial(int patologia_estudiada1, int patologia_estudiada2, int resultado);
+    QVector<int> selectConclusion(QVector<int> patologias, QVector<bool> diferenciales, QVector<int> resultadosDemencias, QVector<int> resultadosParkinson);
 
 public:
     explicit pdfreport(QObject *parent = 0);
 public slots:
     Q_INVOKABLE void setMongoInfo(const QString, const unsigned int);
-    Q_INVOKABLE void newReport(QString reference);
+    Q_INVOKABLE void newReport(QString filePathJson);
     Q_INVOKABLE QStringList dbPatients(QString pathology);
     Q_INVOKABLE QStringList availableTests(QString patient);
     Q_INVOKABLE void allParams();
@@ -99,6 +113,7 @@ public slots:
     Q_INVOKABLE void paramsToShow(QString test);
     Q_INVOKABLE void configLogoDialog(QAbstractButton *);
     Q_INVOKABLE void changeLogo(QAbstractButton *);
+
 };
 
 #endif // PDFREPORT_H

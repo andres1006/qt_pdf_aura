@@ -5,8 +5,7 @@
 #include <QVBoxLayout>
 #include <QLabel>
 #include <QProgressDialog>
-#include <QPrinter>
-#include <QPrintDialog>
+#include <QVector>
 
 /**
   *   @brief  Constructor por defecto
@@ -26,37 +25,22 @@ QStringList pdfreport::dbPatients(QString pathology){
     m_pathology.clear();
     m_pathology = pathology;
     m_patient.clear();
-    qDebug()<<"step 3.1...";
-    qDebug()<<"MONGO URL: ";
-    qDebug()<<m_mongoUrl;
-    qDebug()<<"MONGO PORT: ";
-    qDebug()<<m_mongoPort;
-    try{
     //mongocxx::client client(mongocxx::uri(QString("mongodb://oscann:CuevaErikSilviaPablo@%1:%2/?authSource=admin&authMechanism=SCRAM-SHA-1").arg(m_mongoUrl).arg(m_mongoPort).toLatin1().data()));
-    mongocxx::client client(mongocxx::uri("mongodb://localhost:27017"));
-
-    qDebug()<<"step 3.1...";
-
-    qDebug()<<"step 3.2...";
+     mongocxx::client client(mongocxx::uri("mongodb://localhost:27017"));
     mongocxx::database db = client["datos"];
     mongocxx::collection coll;
     mongocxx::options::find opts{};
     opts.projection(bsoncxx::builder::stream::document{} << "_id" << 0 <<"ID"<<1<< bsoncxx::builder::stream::finalize);
-    qDebug()<<"step 3.3...";
-
+    try{
         coll = db[m_pathology.toLatin1().data()];
-
         mongocxx::cursor cursor = coll.find({},opts);
         for(auto doc : cursor) {
             list.push_back(doc["ID"].get_utf8().value.to_string().c_str());
-
-            qDebug()<<"step 3...";
         }
     }catch (mongocxx::exception &e) {
         std::cerr << "MONGO ERROR: "<<e.what()<<"\n";
     }
 
-    qDebug()<<"step 3.4...";
 
     return list;
 }
@@ -141,7 +125,7 @@ void pdfreport::allParams(){
                 //TEMP_
                 key = mEK.key().to_string().c_str();
                 if(key.mid(0,5).compare("TEMP_") == 0)
-                    qDebug()<<" key: "<<mEK.key().to_string().c_str();
+                    //qDebug()<<" key: "<<mEK.key().to_string().c_str();
                     m_allParams.push_back(mEK.key().to_string().c_str());
             }
         }
@@ -213,6 +197,190 @@ int pdfreport::testParams(QStringList tests){
     return m_tests.length();
 }
 
+QVector<int> pdfreport::selectConclusion(QVector<int> patologias, QVector<bool> diferenciales, QVector<int> resultadosDemencias, QVector<int> resultadosParkinson){
+    QVector<int> seleccion;
+    for (int i = 0; i<patologias.length(); i++){
+        if(patologias[i] == 2)
+            seleccion.append(2);
+        if(patologias[i] == 5)
+            seleccion.append(5);
+        if(patologias[i] == 9)
+            seleccion.append(9);
+        if(patologias[i] == 3)
+            seleccion.append(3);
+        if(patologias[i] == 10)
+            seleccion.append(10);
+        if(patologias[i] == 8)
+            seleccion.append(8);
+    }
+    if(diferenciales[0]){
+        if(patologias.contains(2) & patologias.contains(5)){
+            if(resultadosDemencias[0] == 2 & resultadosDemencias[1] == 5){
+                seleccion.append(25);
+                seleccion.remove(seleccion.indexOf(2));
+                seleccion.remove(seleccion.indexOf(5));
+            }
+        }
+    }
+    if(diferenciales[1]){
+        if(patologias.contains(2) & patologias.contains(9)){
+            if(resultadosDemencias[0] == 2 & resultadosDemencias[2] == 9){
+                seleccion.append(29);
+                if(!seleccion.contains(25))
+                    seleccion.remove(seleccion.indexOf(2));
+                seleccion.remove(seleccion.indexOf(9));
+            }
+        }
+    }
+    if(diferenciales[2]){
+        if(patologias.contains(5) & patologias.contains(9)){
+            if(resultadosDemencias[1] == 5 & resultadosDemencias[2] == 9){
+                seleccion.append(59);
+                if(!seleccion.contains(25))
+                    seleccion.remove(seleccion.indexOf(5));
+                if(!seleccion.contains(29))
+                    seleccion.remove(seleccion.indexOf(9));
+            }
+        }
+    }
+    if(diferenciales[3]){
+        if(patologias.contains(3) & patologias.contains(10)){
+            if(resultadosParkinson[0] == 3 & resultadosParkinson[1] == 10){
+                seleccion.append(310);
+                seleccion.remove(seleccion.indexOf(3));
+                seleccion.remove(seleccion.indexOf(10));
+            }
+        }
+    }
+    return seleccion;
+}
+
+QString pdfreport::ImprimeInformeControl(int patologia_estudiada, int resultado) {
+
+    QString mensaje;
+    QString texto;
+
+    double auc_media[] = { 0.9753, 0.9654, 0.8368, 0.9866, 0.9192, 0.8753 };
+    double IC_max[] = { 0.9985,0.9912,0.9916,0.9923,0.937,0.9265 };
+    double IC_min[] = { 0.95, 0.9147, 0.6919, 0.9783, 0.8829, 0.8004 };
+    double sensibilidad[] = { 1,1,0.85,1,0.94,1 };
+    double especificidad[] = { 0.95,0.9,0.78,0.95,1,0.95 };
+    if (resultado != 1) {
+        if (patologia_estudiada == 2 && resultado == 2) {
+            mensaje += "Findings in the performed eye movement tests are not those expected for aged-matched controls.";
+            mensaje += " In patients with cognitive complaints, the pattern found in eye movement performance is compatible with ";
+            mensaje += "Alzheimer's disease.";
+            texto = QString(" [AUC: %1;  CI: [%2, %3];  Specificity: %4; Sensitivity: %5].").arg(auc_media[0]).arg(IC_min[0]).arg(IC_max[0]).arg(especificidad[0]).arg(sensibilidad[0]);
+            mensaje += texto;
+        }
+        else if (patologia_estudiada == 3 && resultado == 3) {
+            mensaje += "Findings in the performed eye movement tests are not those expected for aged-matched controls.";
+            mensaje += " In patients with cognitive complaints, the pattern found in eye movement performance is compatible with ";
+            mensaje += "Parkinson's disease.\n";
+            texto = QString(" [AUC: %1;  CI: [%2, %3];  Specificity: %4; Sensitivity: %5].").arg(auc_media[3]).arg(IC_min[3]).arg(IC_max[3]).arg(especificidad[3]).arg(sensibilidad[3]);
+            mensaje += texto;
+        }
+        else if (patologia_estudiada == 5 && resultado == 5) {
+            mensaje += "Findings in the performed eye movement tests are not those expected for aged-matched controls.";
+            mensaje += " In patients with cognitive complaints, the pattern found in eye movement performance is compatible with ";
+            mensaje += "Frontotemporal dementia.\n";
+            texto = QString(" [AUC: %1,  CI: [%2, %3],  Specificity: %4,  Sensitivity: %5].").arg(auc_media[1]).arg(IC_min[1]).arg(IC_max[1]).arg(especificidad[1]).arg(sensibilidad[1]);
+            mensaje += texto;
+        }
+        else if (patologia_estudiada == 8 && resultado == 8) {
+            mensaje += "Findings in the performed eye movement tests are not those expected for aged-matched controls.";
+            mensaje += " In patients with cognitive complaints, the pattern found in eye movement performance is compatible with ";
+            mensaje += "Minimal Hepatic Encephalopathy.\n";
+            texto = QString(" [AUC: %1;  CI: [%2, %3];  Specificity: %4; Sensitivity: %5].").arg(auc_media[5]).arg(IC_min[5]).arg(IC_max[5]).arg(especificidad[5]).arg(sensibilidad[5]);
+            mensaje += texto;
+        }
+        else if (patologia_estudiada == 9 && resultado == 9) {
+            mensaje += "Findings in the performed eye movement tests are not those expected for aged-matched controls.";
+            mensaje += " In patients with cognitive complaints, the pattern found in eye movement performance is compatible with ";
+            mensaje += "Mild Cognitive Impairment.\n";
+            texto = QString(" [AUC: %1;  CI: [%2, %3];  Specificity: %4; Sensitivity: %5].").arg(auc_media[2]).arg(IC_min[2]).arg(IC_max[2]).arg(especificidad[2]).arg(sensibilidad[2]);
+            mensaje += texto;
+        }
+        else if (patologia_estudiada == 10 && resultado == 10) {
+            mensaje += "Findings in the performed eye movement tests are not those expected for aged-matched controls.";
+            mensaje += " In patients with cognitive complaints, the pattern found in eye movement performance is compatible with ";
+            mensaje += "Parkinsonisms.\n";
+            texto = QString(" [AUC: %1;  CI: [%2, %3];  Specificity: %4; Sensitivity: %5].").arg(auc_media[4]).arg(IC_min[4]).arg(IC_max[4]).arg(especificidad[4]).arg(sensibilidad[4]);
+            mensaje += texto;
+        }
+        else
+            mensaje = "Error: OM Battery ID does not match with AI result.\n";
+    }
+    else
+        mensaje += "El resultado de la bateria de movimiento ocular no presenta alteraciones y es compatible con los parametros de normalidad en el grupo de edad del paciente.\n";
+
+    return mensaje;
+}
+
+QString pdfreport::ImprimeInformeDiferencial(int patologia_estudiada1, int patologia_estudiada2, int resultado) {
+
+    QString mensaje;
+    QString texto;
+
+    double auc_media[] = { 0.9753, 0.9654, 0.8368, 0.9866 }; // POR DEFINIR!!!!!!!!!!!
+    double IC_max[] = { 0.9985,0.9912,0.9916,0.9923 };
+    double IC_min[] = { 0.95, 0.9147, 0.6919, 0.9783 };
+    double sensibilidad[] = { 1,1,0.85,1 };
+    double especificidad[] = { 0.95,0.9,0.78,0.95 };
+
+    mensaje += "In this differential analysis, the pattern found in eye movement performance is compatible with ";
+    if ((patologia_estudiada1 == 2 && patologia_estudiada2 == 5) || (patologia_estudiada1 == 5 && patologia_estudiada2 == 2)) {
+        if (resultado == 2 || resultado == 5) {
+            if (resultado == 2)
+                mensaje += "Alzheimer's Disease.\n";
+            else if (resultado == 5)
+                mensaje += "Frontotempral Dementia.\n";
+            texto = QString(" [AUC: %1;  CI: [%2, %3];  Specificity: %4; Sensitivity: %5].").arg(auc_media[0]).arg(IC_min[0]).arg(IC_max[0]).arg(especificidad[0]).arg(sensibilidad[0]);
+            mensaje += texto;
+        }
+        else
+            mensaje = "Error: OM Battery ID does not match with AI result.\n";
+    }
+    else if ((patologia_estudiada1 == 2 && patologia_estudiada2 == 9) || (patologia_estudiada1 == 9 && patologia_estudiada2 == 2)) {
+        if (resultado == 2 || resultado == 9) {
+            if (resultado == 2)
+                mensaje += "Alzheimer's Disease.\n";
+            else if (resultado == 9)
+                mensaje += "Mild Cognitive Impairment.\n";
+            texto = QString(" [AUC: %1;  CI: [%2, %3];  Specificity: %4; Sensitivity: %5].").arg(auc_media[1]).arg(IC_min[1]).arg(IC_max[1]).arg(especificidad[1]).arg(sensibilidad[1]);
+            mensaje += texto;
+        }
+        else
+            mensaje = "Error: OM Battery ID does not match with AI result.\n";
+    }
+    else if ((patologia_estudiada1 == 5 && patologia_estudiada2 == 9) || (patologia_estudiada1 == 9 && patologia_estudiada2 == 5)) {
+        if (resultado == 5 || resultado == 9) {
+            if (resultado == 5)
+                mensaje += "Frontotempral Dementia.\n";
+            else if (resultado == 9)
+                mensaje += "Mild Cognitive Impairment.\n";
+            texto = QString(" [AUC: %1;  CI: [%2, %3];  Specificity: %4; Sensitivity: %5].").arg(auc_media[2]).arg(IC_min[2]).arg(IC_max[2]).arg(especificidad[2]).arg(sensibilidad[2]);
+            mensaje += texto;
+        }
+        else
+            mensaje = "Error: OM Battery ID does not match with AI result.\n";
+    }
+    else if ((patologia_estudiada1 == 3 && patologia_estudiada2 == 10) || (patologia_estudiada1 == 10 && patologia_estudiada2 == 3)) {
+        if (resultado == 3 || resultado == 10) {
+            if (resultado == 3)
+                mensaje += "Parkinson's Disease.\n";
+            else if (resultado == 10)
+                mensaje += "Parkinsionisms.\n";
+            texto = QString(" [AUC: %1;  CI: [%2, %3];  Specificity: %4; Sensitivity: %5].").arg(auc_media[3]).arg(IC_min[3]).arg(IC_max[3]).arg(especificidad[3]).arg(sensibilidad[3]);
+            mensaje += texto;
+        }
+        else
+            mensaje = "Error: OM Battery ID does not match with AI result.\n";
+    }
+    return mensaje;
+}
+
+
 
 
 /**
@@ -229,11 +397,12 @@ int pdfreport::testParams(QStringList tests){
   *   @param  inputPath ruta a partir de la cual se buscan pruebas para el reporte. También se guarda el pdf aquí
   *   @return void
   */
-void pdfreport::newReport(QString reference){
+void pdfreport::newReport(QString filePathJson){
 
      qDebug()<<Q_FUNC_INFO<<" -----------------------------------------------------NEW REPORT------------------------------------------------------------------------------------------------------: "<<m_date;
 
     QStringList simpleList;
+    QString reference;
     QPair<QVector<QPixmap>, QPair<QVector<QStringList>, QVector<QStringList>>> tableGraphs;
     //QVector<QPair<QString, QStringList>> items;
     //TODO: traer de la DB: _lat_ -> Latencia; _gain_ -> Ganancia
@@ -254,32 +423,125 @@ void pdfreport::newReport(QString reference){
     /////////////////////////////////////////////
     /// \brief pdfWr
     //TODO: Open a FileDialog to select destination
-    QPdfWriter pdfWr(QString("/home/andresagudelo/Documentos/PDFEXPORT/%1.pdf").arg(m_patient));
-
+    qDebug()<<"paso 1";
+    QPdfWriter pdfWr(QString(filePathJson+"/%1.pdf").arg(m_patient));
     pdfWr.setCreator("Aura Innovative Robotics S.L.");
     pdfWr.setTitle(m_patient);
+    qDebug()<<"paso 2";
     pdfReportHelper pdfObj(pdfWr);
     //HEADER
     int hHead=30;
     int paddingHead=3;
-    QImage headLogoIzq("/home/andresagudelo/Documentos/auralogo.png"); //Probar aqui a cargar .png si el .jpg no devuelve resultado
+    QImage headLogoIzq("/home/oscann/Pictures/hm.jpg"); //Probar aqui a cargar .png si el .jpg no devuelve resultado
     if(headLogoIzq.isNull()){
-        headLogoIzq.load("/home/andresagudelo/Documentos/auralogo.png");
+        headLogoIzq.load("/home/oscann/Pictures/hm.jpg");
     }
+    qDebug()<<"paso 3";
     QImage headLogoAura;
-    headLogoAura.load(":/home/andresagudelo/Documentos/auralogo.png"); //Logo de aura en 16:9 en el qrc
+    headLogoAura.load(":/qml/qtcam/videocapturefilter_QML/images/auralogo_16_9.png"); //Logo de aura en 16:9 en el qrc
     //FOOTER
     int hFoot=15;
     int paddingFoot=paddingHead;
 
+    AuraJson *json = new AuraJson();
+    json->readJson(QString(filePathJson+"/%1.json").arg(m_patient));
+
+    if (json->getAge() <= 40)
+        reference = 'A';
+    else if (json->getAge() <= 50)
+        reference = 'B';
+    else if (json->getAge() <= 60)
+        reference = 'C';
+    else
+        reference = 'D';
+
+    qDebug()<<"paso 4";
     pdfObj.configHeader(hHead,paddingHead,headLogoIzq,headLogoAura);
     pdfObj.configFooter(hFoot,paddingFoot);
 
     tableGraphs = getGraphsAndTables(m_pathology, m_patient, reference);
     simpleList.clear();
     //Asignar los parámetros de la lista de la pag.1 y del pie de pagina
-    simpleList.append("Código|"+m_patient);
-    simpleList.append("Fecha|" + m_date);
+    simpleList.append("ID|"+m_patient);
+    simpleList.append("Date|" + m_date);
+    simpleList.append("Age Group|"+reference);
+
+    qDebug() << "Step 1:";
+    //QVector<int> patologias_estudiadas = {5,3,10};
+    qDebug() << "resultados IA DEMENCIAS: " << json->getResultados_IA_demencias();
+    json->createJson();
+    json->writeJson();
+    QVector<int> patologias_estudiadas = json->getPathologies();//{2,5,3,10}; //HAY QUE AGREGAR LA LECTURA DEL JSON!! (se puede hacer desde fuera y considerar el vector un parámetro de la clase)
+    qDebug() << "Step 2:";
+    //QVector<bool> diferenciales = {1,1,0,0};
+    QVector<bool> diferenciales = json->getIA_analysis();//{1,1,0,0};
+    qDebug() << "Step 3:";
+    QVector<int> resultadosDemencias = json->getResultados_IA_demencias(); //{2,5,9,2,2,9};
+    QVector<int> resultadosParkinson = json->getResultados_IA_parkinson(); //{3,1,3};
+    int resultadoEHM = json->getResultados_IA_EHM(); //8;
+
+
+    QStringList patologias;
+    for (int i = 0; i < patologias_estudiadas.length(); i++) {
+        if (patologias_estudiadas[i] == 2)
+            patologias << "   Alzheimer Disease tasks\n";
+        else if (patologias_estudiadas[i] == 3)
+            patologias << "   Parkinson Disease tasks\n";
+        else if (patologias_estudiadas[i] == 5)
+            patologias << "   Frontotemporal Dementia tasks\n";
+        else if (patologias_estudiadas[i] == 8)
+            patologias << "   Minimal Hepatic Encephalopathy tasks\n";
+        else if (patologias_estudiadas[i] == 9)
+            patologias << "   Mild Cognitive Impairment tasks\n";
+        else if (patologias_estudiadas[i] == 10)
+            patologias << "   Parkinsionisms tasks\n";
+    }
+
+    if (diferenciales[0])
+        patologias << "   Differential AD vs FTD tasks";
+    if (diferenciales[1])
+        patologias << "   Differential AD vs MCI tasks";
+    if (diferenciales[2])
+        patologias << "   Differential FTD vs MCI tasks";
+    if (diferenciales[3])
+        patologias << "   Differential PD vs PKS tasks";
+
+    simpleList.append("OM Battery ID|"+patologias[0]);
+    if(patologias.length()>1){
+        for(int i = 1; i<patologias.length(); i++)
+            simpleList.append(patologias[i]);
+    }
+
+    //int n_demencias = 0;
+    //for (int i = 0; i < patologias_estudiadas.length(); i++){
+    //    if (patologias_estudiadas[i] == 2 | patologias_estudiadas[i] == 5 | patologias_estudiadas[i] == 9)
+    //        n_demencias++;
+    //}
+
+
+    QVector<int> seleccion = selectConclusion(patologias_estudiadas,diferenciales,resultadosDemencias,resultadosParkinson);
+    for (int i = 0; i < seleccion.length(); i++) {
+        if (seleccion[i] == 2)
+            simpleList.append("AD conclusion|"+ImprimeInformeControl(2,resultadosDemencias[0]));
+        else if (seleccion[i] == 5)
+            simpleList.append("DFT conclusion|"+ImprimeInformeControl(5,resultadosDemencias[1]));
+        else if (seleccion[i] == 9)
+            simpleList.append("DCL conclusion|"+ImprimeInformeControl(9,resultadosDemencias[2]));
+        else if (seleccion[i] == 25)
+            simpleList.append("Differential analysis: AD vs FTD|"+ImprimeInformeDiferencial(2,5,resultadosDemencias[3]));
+        else if (seleccion[i] == 29)
+            simpleList.append("Differential analysis: AD vs MCI|"+ImprimeInformeDiferencial(2,9,resultadosDemencias[4]));
+        else if (seleccion[i] == 59)
+            simpleList.append("Differential analysis: FTD vs MCI|"+ImprimeInformeDiferencial(5,9,resultadosDemencias[5]));
+        else if (seleccion[i] == 8)
+            simpleList.append("MHE conclusion|"+ImprimeInformeControl(8,resultadoEHM));
+        else if (seleccion[i] == 3)
+            simpleList.append("PD conclusion|"+ImprimeInformeControl(3,resultadosParkinson[0]));
+        else if (seleccion[i] == 10)
+            simpleList.append("PKS conclusion|"+ImprimeInformeControl(10,resultadosParkinson[1]));
+        else if (seleccion[i] == 310)
+            simpleList.append("Differential analysis: EP vs PKS|"+ImprimeInformeDiferencial(3,10,resultadosParkinson[2]));
+    }
     //TODO: Pablo's Number
     //simpleList.append("Asistencia Diferencial|0,8 EA");
     //simpleList.append("&nbsp;|0,5 EP");
@@ -288,20 +550,25 @@ void pdfreport::newReport(QString reference){
     pdfObj.setHeaderTitle("ANÁLISIS DE MOVIMIENTO OCULAR");
     pdfObj.setFooterText(m_patient);
     pdfObj.newPDF(pdfWr,tableGraphs,simpleList, false);
-
-
-
 }
 
 QString pdfreport::validateDBElement(bsoncxx::document::element l){
-    if(l.type() == bsoncxx::type::k_double)
+    if(l.type() == bsoncxx::type::k_double){
+        //qDebug()<<Q_FUNC_INFO<< "dato = "<<QString("%1").arg(l.get_double().value, 0, 'f', 2)<<"tipo double";
         return QString("%1").arg(l.get_double().value, 0, 'f', 2);
-    else if(l.type() == bsoncxx::type::k_int32)
+    }
+    else if(l.type() == bsoncxx::type::k_int32){
+        //qDebug()<<Q_FUNC_INFO<< "dato = "<<QString("%1").arg(l.get_int32().value)<<"tipo int32";
         return QString("%1").arg(l.get_int32().value);
-    else if(l.type() == bsoncxx::type::k_int64)
+    }
+    else if(l.type() == bsoncxx::type::k_int64){
+        //qDebug()<<Q_FUNC_INFO<< "dato = "<<QString("%1").arg(l.get_int64().value)<<"tipo int64";
         return QString("%1").arg(l.get_int64().value);
-    else if(l.type() == bsoncxx::type::k_utf8)
+    }
+    else if(l.type() == bsoncxx::type::k_utf8){
+        //qDebug()<<Q_FUNC_INFO<< "dato = "<<QString("%1").arg(l.get_utf8().value.to_string().c_str())<<"tipo utf8";
         return QString("%1").arg(l.get_utf8().value.to_string().c_str());
+    }
     return "-";
 }
 
@@ -411,13 +678,14 @@ QPair<QVector<QPixmap>, QPair<QVector<QStringList>, QVector<QStringList>>> pdfre
         bsoncxx::stdx::optional<bsoncxx::document::value> doc = coll.find_one(bsoncxx::builder::stream::document{} << "ID" << patient.toLatin1().data() << bsoncxx::builder::stream::finalize);
         if(doc) {
             auto v = (*doc).view();
-            std::cout<<"docv="<<bsoncxx::to_json(v)<<std::endl;
+            std::cout <<"DOVUMENTO V =" << bsoncxx::to_json(v) << std::endl;
             //mongocxx::cursor cursorRef = db[pathology.toLatin1().data()].aggregate(p, mongocxx::options::aggregate{});
             mongocxx::cursor cursorRef = db[QString("ControlesGrupo%1").arg(reference).toLatin1().data()].aggregate(p, mongocxx::options::aggregate{});
             mongocxx::cursor::iterator iRef = cursorRef.begin();
             bsoncxx::document::view vRef = *iRef;
-            std::cout<<"docv="<<bsoncxx::to_json(vRef)<<std::endl;
+            std::cout <<"DOVUMENTO V =" << bsoncxx::to_json(vRef) << std::endl;
             foreach (pair, m_testsParams) {
+                qDebug() << "pair = " << pair;
                 if(pair.first.mid(0,4).compare("tsls") == 0 || pair.first.mid(0,4).compare("tfix") == 0){
                     test = pair.first.mid(0,4);
                 }else{
@@ -436,7 +704,7 @@ QPair<QVector<QPixmap>, QPair<QVector<QStringList>, QVector<QStringList>>> pdfre
                 cnsLabels.clear();
                 QString strsd;
                 foreach(const QString &str, pair.second){
-                    qDebug()<<Q_FUNC_INFO<<" test: "<<test;
+                    qDebug()<<Q_FUNC_INFO<<" test_variable: "<<str;
                     strsd = str + "sd_";
                     if(str.compare("_lat_") == 0){                                                  //TSV, TSM, TAS, TS
                         if(test.compare("tsls") == 0)
@@ -528,7 +796,6 @@ QPair<QVector<QPixmap>, QPair<QVector<QStringList>, QVector<QStringList>>> pdfre
                     qDebug()<<Q_FUNC_INFO<<" staValues Label: "<<staLabels.at(i);
                     qDebug()<<Q_FUNC_INFO<<" staValues element Avg: "<<QString("TEMP_%1%2%3").arg(test).arg(staValues.at(i).first).arg(hv).toLatin1().data();
                     qDebug()<<Q_FUNC_INFO<<" staValues element Sd: "<<QString("TEMP_%1%2%3").arg(test).arg(staValues.at(i).second).arg(hv).toLatin1().data();
-                    bsoncxx::document::element prueba = v[QString("TEMP_%1%2%3").arg(test).arg(staValues.at(i).first).arg(hv).toLatin1().data()];
                     qslSta.append(QString("%1|%2|%3|%4|%5")
                                   .arg(staLabels.at(i).toLatin1().data())
                                   .arg(validateDBElement(v[QString("TEMP_%1%2%3").arg(test).arg(staValues.at(i).first).arg(hv).toLatin1().data()]))
@@ -556,9 +823,10 @@ QPair<QVector<QPixmap>, QPair<QVector<QStringList>, QVector<QStringList>>> pdfre
             result.second.second = qvCns;
             result.first = graphs;
         }
-
+        else{
+            return result;
+        }
     }catch (mongocxx::exception &e) {
-        qDebug()<<"---------------------- PASO 3 ----------------------";
         std::cerr << "MONGO ERROR: "<<e.what()<<"\n";
     }
     return result;

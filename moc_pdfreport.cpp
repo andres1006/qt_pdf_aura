@@ -22,7 +22,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_pdfreport_t {
     QByteArrayData data[16];
-    char stringdata0[172];
+    char stringdata0[175];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -35,22 +35,22 @@ QT_MOC_LITERAL(0, 0, 9), // "pdfreport"
 QT_MOC_LITERAL(1, 10, 12), // "setMongoInfo"
 QT_MOC_LITERAL(2, 23, 0), // ""
 QT_MOC_LITERAL(3, 24, 9), // "newReport"
-QT_MOC_LITERAL(4, 34, 9), // "reference"
-QT_MOC_LITERAL(5, 44, 10), // "dbPatients"
-QT_MOC_LITERAL(6, 55, 9), // "pathology"
-QT_MOC_LITERAL(7, 65, 14), // "availableTests"
-QT_MOC_LITERAL(8, 80, 7), // "patient"
-QT_MOC_LITERAL(9, 88, 9), // "allParams"
-QT_MOC_LITERAL(10, 98, 10), // "testParams"
-QT_MOC_LITERAL(11, 109, 4), // "test"
-QT_MOC_LITERAL(12, 114, 12), // "paramsToShow"
-QT_MOC_LITERAL(13, 127, 16), // "configLogoDialog"
-QT_MOC_LITERAL(14, 144, 16), // "QAbstractButton*"
-QT_MOC_LITERAL(15, 161, 10) // "changeLogo"
+QT_MOC_LITERAL(4, 34, 12), // "filePathJson"
+QT_MOC_LITERAL(5, 47, 10), // "dbPatients"
+QT_MOC_LITERAL(6, 58, 9), // "pathology"
+QT_MOC_LITERAL(7, 68, 14), // "availableTests"
+QT_MOC_LITERAL(8, 83, 7), // "patient"
+QT_MOC_LITERAL(9, 91, 9), // "allParams"
+QT_MOC_LITERAL(10, 101, 10), // "testParams"
+QT_MOC_LITERAL(11, 112, 4), // "test"
+QT_MOC_LITERAL(12, 117, 12), // "paramsToShow"
+QT_MOC_LITERAL(13, 130, 16), // "configLogoDialog"
+QT_MOC_LITERAL(14, 147, 16), // "QAbstractButton*"
+QT_MOC_LITERAL(15, 164, 10) // "changeLogo"
 
     },
     "pdfreport\0setMongoInfo\0\0newReport\0"
-    "reference\0dbPatients\0pathology\0"
+    "filePathJson\0dbPatients\0pathology\0"
     "availableTests\0patient\0allParams\0"
     "testParams\0test\0paramsToShow\0"
     "configLogoDialog\0QAbstractButton*\0"

@@ -64,6 +64,7 @@ SOURCES       = main.cpp \
 		videopreview.cpp moc_data.cpp \
 		moc_process.cpp \
 		moc_qutils.cpp \
+		moc_aurajson.cpp \
 		moc_pdfreport.cpp \
 		moc_oscannplot.cpp \
 		moc_qcustomplot.cpp \
@@ -83,6 +84,7 @@ OBJECTS       = main.o \
 		moc_data.o \
 		moc_process.o \
 		moc_qutils.o \
+		moc_aurajson.o \
 		moc_pdfreport.o \
 		moc_oscannplot.o \
 		moc_qcustomplot.o \
@@ -432,9 +434,9 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 	g++ -pipe -O2 -std=gnu++11 -Wall -W -dM -E -o moc_predefs.h /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_data.cpp moc_process.cpp moc_qutils.cpp moc_pdfreport.cpp moc_oscannplot.cpp moc_qcustomplot.cpp moc_videopreview.cpp
+compiler_moc_header_make_all: moc_data.cpp moc_process.cpp moc_qutils.cpp moc_aurajson.cpp moc_pdfreport.cpp moc_oscannplot.cpp moc_qcustomplot.cpp moc_videopreview.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_data.cpp moc_process.cpp moc_qutils.cpp moc_pdfreport.cpp moc_oscannplot.cpp moc_qcustomplot.cpp moc_videopreview.cpp
+	-$(DEL_FILE) moc_data.cpp moc_process.cpp moc_qutils.cpp moc_aurajson.cpp moc_pdfreport.cpp moc_oscannplot.cpp moc_qcustomplot.cpp moc_videopreview.cpp
 moc_data.cpp: utilsprocess.h \
 		qutils.h \
 		data.h \
@@ -456,6 +458,11 @@ moc_qutils.cpp: utilsprocess.h \
 		/usr/lib/qt5/bin/moc
 	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/andresagudelo/Documentos/QTproyects/qt_pdf_prueba -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtQuick -I/usr/include/x86_64-linux-gnu/qt5/QtPrintSupport -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtDBus -I/usr/include/x86_64-linux-gnu/qt5/QtSql -I/usr/include/x86_64-linux-gnu/qt5/QtQml -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include qutils.h -o moc_qutils.cpp
 
+moc_aurajson.cpp: aurajson.h \
+		moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/andresagudelo/Documentos/QTproyects/qt_pdf_prueba -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtQuick -I/usr/include/x86_64-linux-gnu/qt5/QtPrintSupport -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtDBus -I/usr/include/x86_64-linux-gnu/qt5/QtSql -I/usr/include/x86_64-linux-gnu/qt5/QtQml -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include aurajson.h -o moc_aurajson.cpp
+
 moc_pdfreport.cpp: pdfreporthelper.h \
 		oscannplot.h \
 		qcustomplot.h \
@@ -463,6 +470,7 @@ moc_pdfreport.cpp: pdfreporthelper.h \
 		utilsprocess.h \
 		qutils.h \
 		videopreview.h \
+		aurajson.h \
 		pdfreport.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
@@ -552,7 +560,8 @@ pdfreport.o: pdfreport.cpp pdfreport.h \
 		data.h \
 		utilsprocess.h \
 		qutils.h \
-		videopreview.h
+		videopreview.h \
+		aurajson.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o pdfreport.o pdfreport.cpp
 
 oscannplot.o: oscannplot.cpp oscannplot.h \
@@ -580,6 +589,9 @@ moc_process.o: moc_process.cpp
 
 moc_qutils.o: moc_qutils.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_qutils.o moc_qutils.cpp
+
+moc_aurajson.o: moc_aurajson.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_aurajson.o moc_aurajson.cpp
 
 moc_pdfreport.o: moc_pdfreport.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_pdfreport.o moc_pdfreport.cpp
