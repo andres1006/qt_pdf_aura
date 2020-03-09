@@ -1,5 +1,6 @@
 #include "videopreview.h"
 
+
 videoPreview::videoPreview(){
     setFlag(QQuickItem::ItemHasContents);
     m_logo = QImage(":qml/qtcam/videocapturefilter_QML/images/oscannblue.png");
@@ -262,3 +263,4 @@ void videoPreview::setData(OData *data){
         blink.push_back(valueRaw.getBlink());
     }
 }
+

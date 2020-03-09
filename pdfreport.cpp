@@ -141,7 +141,7 @@ void pdfreport::allParams(){
                 //TEMP_
                 key = mEK.key().to_string().c_str();
                 if(key.mid(0,5).compare("TEMP_") == 0)
-                    //qDebug()<<" key: "<<mEK.key().to_string().c_str();
+                    qDebug()<<" key: "<<mEK.key().to_string().c_str();
                     m_allParams.push_back(mEK.key().to_string().c_str());
             }
         }
@@ -262,12 +262,12 @@ void pdfreport::newReport(QString reference){
     //HEADER
     int hHead=30;
     int paddingHead=3;
-    QImage headLogoIzq("/home/andresagudelo/Documentos/logo.png"); //Probar aqui a cargar .png si el .jpg no devuelve resultado
+    QImage headLogoIzq("/home/andresagudelo/Documentos/auralogo.png"); //Probar aqui a cargar .png si el .jpg no devuelve resultado
     if(headLogoIzq.isNull()){
-        headLogoIzq.load("/home/andresagudelo/Documentos/logo.png");
+        headLogoIzq.load("/home/andresagudelo/Documentos/auralogo.png");
     }
     QImage headLogoAura;
-    headLogoAura.load(":/home/andresagudelo/Documentos/logo.png"); //Logo de aura en 16:9 en el qrc
+    headLogoAura.load(":/home/andresagudelo/Documentos/auralogo.png"); //Logo de aura en 16:9 en el qrc
     //FOOTER
     int hFoot=15;
     int paddingFoot=paddingHead;

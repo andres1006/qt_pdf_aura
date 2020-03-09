@@ -13,6 +13,8 @@
 #include <mongocxx/instance.hpp>
 #include <mongocxx/exception/exception.hpp>
 
+
+
 #include "pdfreport.h"
 
 int main(int argc, char *argv[])
@@ -68,14 +70,15 @@ Prueba generacion de pdf: archivos necesarios pdfreport.cpp/.h, oscannplot.cpp/.
     qDebug("step 2...");
     pdf->setMongoInfo("localhost",27017);
     qDebug("step 3...");
-    QStringList qml_patients = pdf->dbPatients("ControlesGrupoA"); //Patologias
+    QStringList qml_patients = pdf->dbPatients(argv[1]); //Patologias
     qDebug("step 4...");
-    QStringList qml_pdf_tests = pdf->availableTests("paciente_grupoA_20"); //paciente
-    //qDebug("step 5...");
+    QStringList qml_pdf_tests = pdf->availableTests(argv[2]); //paciente
+    qDebug("step 5...");
     pdf->allParams();
     qDebug("step 6...");
     int n_test = pdf->testParams(qml_pdf_tests);
     qDebug("step 7...");
-    pdf->newReport("A"); //Rango de edades del paciente
+    pdf->newReport(argv[3]); //Rango de edades del paciente
     qDebug("step 8...");
+
 }
