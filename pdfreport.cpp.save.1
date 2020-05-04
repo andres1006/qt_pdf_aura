@@ -26,9 +26,8 @@ QStringList pdfreport::dbPatients(QString pathology){
     m_pathology = pathology;
     m_patient.clear();
     //mongocxx::client client(mongocxx::uri(QString("mongodb://oscann:CuevaErikSilviaPablo@%1:%2/?authSource=admin&authMechanism=SCRAM-SHA-1").arg(m_mongoUrl).arg(m_mongoPort).toLatin1().data()));
-	mongocxx::instance instance{}; // This should be done only once.
-	mongocxx::uri uri("mongodb://localhost:27017");
-	mongocxx::client client(uri);
+    mongocxx::uri uri("mongodb://localhost:27017");
+    mongocxx::client client(uri);
     mongocxx::database db = client["datos"];
     mongocxx::collection coll;
     mongocxx::options::find opts{};
@@ -54,8 +53,7 @@ QStringList pdfreport::availableTests(QString patient){
     m_patient.clear();
     m_patient = patient;
     //mongocxx::client client(mongocxx::uri(QString("mongodb://oscann:CuevaErikSilviaPablo@%1:%2/?authSource=admin&authMechanism=SCRAM-SHA-1").arg(m_mongoUrl).arg(m_mongoPort).toLatin1().data()));
-	mongocxx::uri uri("mongodb://localhost:27017");
-	mongocxx::client client(uri);
+
     mongocxx::database db = client["tests"];
     mongocxx::collection coll;
     bsoncxx::stdx::optional<bsoncxx::document::value> query;
@@ -114,9 +112,7 @@ QStringList pdfreport::availableTests(QString patient){
 
 
 void pdfreport::allParams(){
-    //mongocxx::client client(mongocxx::uri(QString("mongodb://oscann:CuevaErikSilviaPablo@%1:%2/?authSource=admin&authMechanism=SCRAM-SHA-1").arg(m_mongoUrl).arg(m_mongoPort).toLatin1().data()));
-	mongocxx::uri uri("mongodb://localhost:27017");
-	mongocxx::client client(uri);
+    mongocxx::client client(mongocxx::uri(QString("mongodb://oscann:CuevaErikSilviaPablo@%1:%2/?authSource=admin&authMechanism=SCRAM-SHA-1").arg(m_mongoUrl).arg(m_mongoPort).toLatin1().data()));
     mongocxx::database db = client["datos"];
     QString key;
     m_allParams.clear();
@@ -424,7 +420,7 @@ void pdfreport::newReport(QString filePathJson){
     /////////////////////////////////////////////
     /// \brief pdfWr
     //TODO: Open a FileDialog to select destination
-    QPdfWriter pdfWr(QString(filePathJson + "/%1.pdf").arg(m_patient));
+    QPdfWriter pdfWr(QString("/home/oscannsanitas/Documents/%1.pdf").arg(m_patient));
     pdfWr.setCreator("Aura Innovative Robotics S.L.");
     pdfWr.setTitle(m_patient);
     pdfReportHelper pdfObj(pdfWr);
@@ -607,9 +603,7 @@ QPair<QVector<QPixmap>, QPair<QVector<QStringList>, QVector<QStringList>>> pdfre
 
     QPair<QString, QStringList> pair;
 
-    //mongocxx::client client(mongocxx::uri(QString("mongodb://oscann:CuevaErikSilviaPablo@%1:%2/?authSource=admin&authMechanism=SCRAM-SHA-1").arg(m_mongoUrl).arg(m_mongoPort).toLatin1().data()));
-	mongocxx::uri uri("mongodb://localhost:27017");
-	mongocxx::client client(uri);
+    mongocxx::client client(mongocxx::uri(QString("mongodb://oscann:CuevaErikSilviaPablo@%1:%2/?authSource=admin&authMechanism=SCRAM-SHA-1").arg(m_mongoUrl).arg(m_mongoPort).toLatin1().data()));
     mongocxx::database db = client["datos"];
 
     std::ostringstream ssKey;

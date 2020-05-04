@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'qutils.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.9.5)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.5.1)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,14 +12,12 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'qutils.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.9.5. It"
+#error "This file was generated using the moc from 5.5.1. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
 
 QT_BEGIN_MOC_NAMESPACE
-QT_WARNING_PUSH
-QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_OTimer_t {
     QByteArrayData data[3];
     char stringdata0[22];
@@ -73,11 +71,11 @@ void OTimer::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
+        void **func = reinterpret_cast<void **>(_a[1]);
         {
             typedef void (OTimer::*_t)();
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&OTimer::timeoutSignal)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&OTimer::timeoutSignal)) {
                 *result = 0;
-                return;
             }
         }
     }
@@ -86,7 +84,7 @@ void OTimer::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
 
 const QMetaObject OTimer::staticMetaObject = {
     { &QObject::staticMetaObject, qt_meta_stringdata_OTimer.data,
-      qt_meta_data_OTimer,  qt_static_metacall, nullptr, nullptr}
+      qt_meta_data_OTimer,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
 };
 
 
@@ -97,9 +95,9 @@ const QMetaObject *OTimer::metaObject() const
 
 void *OTimer::qt_metacast(const char *_clname)
 {
-    if (!_clname) return nullptr;
+    if (!_clname) return Q_NULLPTR;
     if (!strcmp(_clname, qt_meta_stringdata_OTimer.stringdata0))
-        return static_cast<void*>(this);
+        return static_cast<void*>(const_cast< OTimer*>(this));
     return QObject::qt_metacast(_clname);
 }
 
@@ -123,7 +121,7 @@ int OTimer::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 // SIGNAL 0
 void OTimer::timeoutSignal()
 {
-    QMetaObject::activate(this, &staticMetaObject, 0, nullptr);
+    QMetaObject::activate(this, &staticMetaObject, 0, Q_NULLPTR);
 }
 struct qt_meta_stringdata_graphType_t {
     QByteArrayData data[9];
@@ -190,7 +188,7 @@ void graphType::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
 
 const QMetaObject graphType::staticMetaObject = {
     { &QObject::staticMetaObject, qt_meta_stringdata_graphType.data,
-      qt_meta_data_graphType,  qt_static_metacall, nullptr, nullptr}
+      qt_meta_data_graphType,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
 };
 
 
@@ -201,15 +199,17 @@ const QMetaObject *graphType::metaObject() const
 
 void *graphType::qt_metacast(const char *_clname)
 {
-    if (!_clname) return nullptr;
+    if (!_clname) return Q_NULLPTR;
     if (!strcmp(_clname, qt_meta_stringdata_graphType.stringdata0))
-        return static_cast<void*>(this);
+        return static_cast<void*>(const_cast< graphType*>(this));
     return QObject::qt_metacast(_clname);
 }
 
 int graphType::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QObject::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
     return _id;
 }
 struct qt_meta_stringdata_cameraType_t {
@@ -267,7 +267,7 @@ void cameraType::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
 
 const QMetaObject cameraType::staticMetaObject = {
     { &QObject::staticMetaObject, qt_meta_stringdata_cameraType.data,
-      qt_meta_data_cameraType,  qt_static_metacall, nullptr, nullptr}
+      qt_meta_data_cameraType,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
 };
 
 
@@ -278,15 +278,17 @@ const QMetaObject *cameraType::metaObject() const
 
 void *cameraType::qt_metacast(const char *_clname)
 {
-    if (!_clname) return nullptr;
+    if (!_clname) return Q_NULLPTR;
     if (!strcmp(_clname, qt_meta_stringdata_cameraType.stringdata0))
-        return static_cast<void*>(this);
+        return static_cast<void*>(const_cast< cameraType*>(this));
     return QObject::qt_metacast(_clname);
 }
 
 int cameraType::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QObject::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
     return _id;
 }
 struct qt_meta_stringdata_testType_t {
@@ -366,7 +368,7 @@ void testType::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, vo
 
 const QMetaObject testType::staticMetaObject = {
     { &QObject::staticMetaObject, qt_meta_stringdata_testType.data,
-      qt_meta_data_testType,  qt_static_metacall, nullptr, nullptr}
+      qt_meta_data_testType,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
 };
 
 
@@ -377,15 +379,17 @@ const QMetaObject *testType::metaObject() const
 
 void *testType::qt_metacast(const char *_clname)
 {
-    if (!_clname) return nullptr;
+    if (!_clname) return Q_NULLPTR;
     if (!strcmp(_clname, qt_meta_stringdata_testType.stringdata0))
-        return static_cast<void*>(this);
+        return static_cast<void*>(const_cast< testType*>(this));
     return QObject::qt_metacast(_clname);
 }
 
 int testType::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QObject::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
     return _id;
 }
 struct qt_meta_stringdata_taskType_t {
@@ -445,7 +449,7 @@ void taskType::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, vo
 
 const QMetaObject taskType::staticMetaObject = {
     { &QObject::staticMetaObject, qt_meta_stringdata_taskType.data,
-      qt_meta_data_taskType,  qt_static_metacall, nullptr, nullptr}
+      qt_meta_data_taskType,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
 };
 
 
@@ -456,15 +460,17 @@ const QMetaObject *taskType::metaObject() const
 
 void *taskType::qt_metacast(const char *_clname)
 {
-    if (!_clname) return nullptr;
+    if (!_clname) return Q_NULLPTR;
     if (!strcmp(_clname, qt_meta_stringdata_taskType.stringdata0))
-        return static_cast<void*>(this);
+        return static_cast<void*>(const_cast< taskType*>(this));
     return QObject::qt_metacast(_clname);
 }
 
 int taskType::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QObject::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
     return _id;
 }
 struct qt_meta_stringdata_displayMode_t {
@@ -524,7 +530,7 @@ void displayMode::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
 
 const QMetaObject displayMode::staticMetaObject = {
     { &QObject::staticMetaObject, qt_meta_stringdata_displayMode.data,
-      qt_meta_data_displayMode,  qt_static_metacall, nullptr, nullptr}
+      qt_meta_data_displayMode,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
 };
 
 
@@ -535,15 +541,17 @@ const QMetaObject *displayMode::metaObject() const
 
 void *displayMode::qt_metacast(const char *_clname)
 {
-    if (!_clname) return nullptr;
+    if (!_clname) return Q_NULLPTR;
     if (!strcmp(_clname, qt_meta_stringdata_displayMode.stringdata0))
-        return static_cast<void*>(this);
+        return static_cast<void*>(const_cast< displayMode*>(this));
     return QObject::qt_metacast(_clname);
 }
 
 int displayMode::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QObject::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
     return _id;
 }
 struct qt_meta_stringdata_colorScheme_t {
@@ -692,19 +700,19 @@ void colorScheme::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         case 5: _t->graphStimulusChanged(); break;
         case 6: _t->guiBgChanged(); break;
         case 7: { QColor _r = _t->graphBG();
-            if (_a[0]) *reinterpret_cast< QColor*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< QColor*>(_a[0]) = _r; }  break;
         case 8: { QColor _r = _t->graphFG();
-            if (_a[0]) *reinterpret_cast< QColor*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< QColor*>(_a[0]) = _r; }  break;
         case 9: { QColor _r = _t->graphGridY();
-            if (_a[0]) *reinterpret_cast< QColor*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< QColor*>(_a[0]) = _r; }  break;
         case 10: { QColor _r = _t->graphGridX();
-            if (_a[0]) *reinterpret_cast< QColor*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< QColor*>(_a[0]) = _r; }  break;
         case 11: { QColor _r = _t->graphGaze();
-            if (_a[0]) *reinterpret_cast< QColor*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< QColor*>(_a[0]) = _r; }  break;
         case 12: { QColor _r = _t->graphStimulus();
-            if (_a[0]) *reinterpret_cast< QColor*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< QColor*>(_a[0]) = _r; }  break;
         case 13: { QColor _r = _t->guiBG();
-            if (_a[0]) *reinterpret_cast< QColor*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< QColor*>(_a[0]) = _r; }  break;
         case 14: _t->setGraphBG((*reinterpret_cast< const QColor(*)>(_a[1]))); break;
         case 15: _t->setGraphFG((*reinterpret_cast< const QColor(*)>(_a[1]))); break;
         case 16: _t->setGraphGridY((*reinterpret_cast< const QColor(*)>(_a[1]))); break;
@@ -716,53 +724,47 @@ void colorScheme::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
+        void **func = reinterpret_cast<void **>(_a[1]);
         {
             typedef void (colorScheme::*_t)();
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&colorScheme::graphBgChanged)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&colorScheme::graphBgChanged)) {
                 *result = 0;
-                return;
             }
         }
         {
             typedef void (colorScheme::*_t)();
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&colorScheme::graphFgChanged)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&colorScheme::graphFgChanged)) {
                 *result = 1;
-                return;
             }
         }
         {
             typedef void (colorScheme::*_t)();
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&colorScheme::graphGridYChanged)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&colorScheme::graphGridYChanged)) {
                 *result = 2;
-                return;
             }
         }
         {
             typedef void (colorScheme::*_t)();
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&colorScheme::graphGridXChanged)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&colorScheme::graphGridXChanged)) {
                 *result = 3;
-                return;
             }
         }
         {
             typedef void (colorScheme::*_t)();
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&colorScheme::graphGazeChanged)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&colorScheme::graphGazeChanged)) {
                 *result = 4;
-                return;
             }
         }
         {
             typedef void (colorScheme::*_t)();
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&colorScheme::graphStimulusChanged)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&colorScheme::graphStimulusChanged)) {
                 *result = 5;
-                return;
             }
         }
         {
             typedef void (colorScheme::*_t)();
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&colorScheme::guiBgChanged)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&colorScheme::guiBgChanged)) {
                 *result = 6;
-                return;
             }
         }
     }
@@ -802,7 +804,7 @@ void colorScheme::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
 
 const QMetaObject colorScheme::staticMetaObject = {
     { &QObject::staticMetaObject, qt_meta_stringdata_colorScheme.data,
-      qt_meta_data_colorScheme,  qt_static_metacall, nullptr, nullptr}
+      qt_meta_data_colorScheme,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
 };
 
 
@@ -813,9 +815,9 @@ const QMetaObject *colorScheme::metaObject() const
 
 void *colorScheme::qt_metacast(const char *_clname)
 {
-    if (!_clname) return nullptr;
+    if (!_clname) return Q_NULLPTR;
     if (!strcmp(_clname, qt_meta_stringdata_colorScheme.stringdata0))
-        return static_cast<void*>(this);
+        return static_cast<void*>(const_cast< colorScheme*>(this));
     return QObject::qt_metacast(_clname);
 }
 
@@ -856,43 +858,43 @@ int colorScheme::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 // SIGNAL 0
 void colorScheme::graphBgChanged()
 {
-    QMetaObject::activate(this, &staticMetaObject, 0, nullptr);
+    QMetaObject::activate(this, &staticMetaObject, 0, Q_NULLPTR);
 }
 
 // SIGNAL 1
 void colorScheme::graphFgChanged()
 {
-    QMetaObject::activate(this, &staticMetaObject, 1, nullptr);
+    QMetaObject::activate(this, &staticMetaObject, 1, Q_NULLPTR);
 }
 
 // SIGNAL 2
 void colorScheme::graphGridYChanged()
 {
-    QMetaObject::activate(this, &staticMetaObject, 2, nullptr);
+    QMetaObject::activate(this, &staticMetaObject, 2, Q_NULLPTR);
 }
 
 // SIGNAL 3
 void colorScheme::graphGridXChanged()
 {
-    QMetaObject::activate(this, &staticMetaObject, 3, nullptr);
+    QMetaObject::activate(this, &staticMetaObject, 3, Q_NULLPTR);
 }
 
 // SIGNAL 4
 void colorScheme::graphGazeChanged()
 {
-    QMetaObject::activate(this, &staticMetaObject, 4, nullptr);
+    QMetaObject::activate(this, &staticMetaObject, 4, Q_NULLPTR);
 }
 
 // SIGNAL 5
 void colorScheme::graphStimulusChanged()
 {
-    QMetaObject::activate(this, &staticMetaObject, 5, nullptr);
+    QMetaObject::activate(this, &staticMetaObject, 5, Q_NULLPTR);
 }
 
 // SIGNAL 6
 void colorScheme::guiBgChanged()
 {
-    QMetaObject::activate(this, &staticMetaObject, 6, nullptr);
+    QMetaObject::activate(this, &staticMetaObject, 6, Q_NULLPTR);
 }
 struct qt_meta_stringdata_OVersions_t {
     QByteArrayData data[5];
@@ -954,11 +956,11 @@ void OVersions::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         Q_UNUSED(_t)
         switch (_id) {
         case 0: { QString _r = _t->tracker();
-            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = _r; }  break;
         case 1: { QString _r = _t->oscann();
-            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = _r; }  break;
         case 2: { QString _r = _t->analizer();
-            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = _r; }  break;
         default: ;
         }
     }
@@ -981,7 +983,7 @@ void OVersions::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
 
 const QMetaObject OVersions::staticMetaObject = {
     { &QObject::staticMetaObject, qt_meta_stringdata_OVersions.data,
-      qt_meta_data_OVersions,  qt_static_metacall, nullptr, nullptr}
+      qt_meta_data_OVersions,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
 };
 
 
@@ -992,9 +994,9 @@ const QMetaObject *OVersions::metaObject() const
 
 void *OVersions::qt_metacast(const char *_clname)
 {
-    if (!_clname) return nullptr;
+    if (!_clname) return Q_NULLPTR;
     if (!strcmp(_clname, qt_meta_stringdata_OVersions.stringdata0))
-        return static_cast<void*>(this);
+        return static_cast<void*>(const_cast< OVersions*>(this));
     return QObject::qt_metacast(_clname);
 }
 
@@ -1380,51 +1382,51 @@ void OCTSettings::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         case 19: _t->screenDistanceChanged((*reinterpret_cast< const int(*)>(_a[1]))); break;
         case 20: _t->resolutionChanged((*reinterpret_cast< const int(*)>(_a[1]))); break;
         case 21: { int _r = _t->clbRecordingTime();
-            if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< int*>(_a[0]) = _r; }  break;
         case 22: { int _r = _t->tstRecordingTime();
-            if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< int*>(_a[0]) = _r; }  break;
         case 23: { int _r = _t->stimulusSize();
-            if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< int*>(_a[0]) = _r; }  break;
         case 24: { int _r = _t->fixedPointSize();
-            if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< int*>(_a[0]) = _r; }  break;
         case 25: { int _r = _t->laps();
-            if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< int*>(_a[0]) = _r; }  break;
         case 26: { int _r = _t->testTime();
-            if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< int*>(_a[0]) = _r; }  break;
         case 27: { QString _r = _t->img1Path();
-            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = _r; }  break;
         case 28: { QString _r = _t->img2Path();
-            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = _r; }  break;
         case 29: { QString _r = _t->img3Path();
-            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = _r; }  break;
         case 30: { QString _r = _t->img4Path();
-            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = _r; }  break;
         case 31: { QString _r = _t->img5Path();
-            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = _r; }  break;
         case 32: { QString _r = _t->img6Path();
-            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = _r; }  break;
         case 33: { QString _r = _t->img7Path();
-            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = _r; }  break;
         case 34: { QString _r = _t->img8Path();
-            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = _r; }  break;
         case 35: { QString _r = _t->img9Path();
-            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = _r; }  break;
         case 36: { QString _r = _t->img10Path();
-            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = _r; }  break;
         case 37: { QString _r = _t->mongoUrl();
-            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = _r; }  break;
         case 38: { uint _r = _t->mongoPort();
-            if (_a[0]) *reinterpret_cast< uint*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< uint*>(_a[0]) = _r; }  break;
         case 39: { int _r = _t->mainDisplay();
-            if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< int*>(_a[0]) = _r; }  break;
         case 40: { float _r = _t->degrees2px();
-            if (_a[0]) *reinterpret_cast< float*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< float*>(_a[0]) = _r; }  break;
         case 41: { double _r = _t->screenDistance();
-            if (_a[0]) *reinterpret_cast< double*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< double*>(_a[0]) = _r; }  break;
         case 42: { double _r = _t->screenWidth();
-            if (_a[0]) *reinterpret_cast< double*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< double*>(_a[0]) = _r; }  break;
         case 43: { QPoint _r = _t->resolution();
-            if (_a[0]) *reinterpret_cast< QPoint*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< QPoint*>(_a[0]) = _r; }  break;
         case 44: _t->setClbRecordingTime((*reinterpret_cast< const int(*)>(_a[1]))); break;
         case 45: _t->setTstRecordingTime((*reinterpret_cast< const int(*)>(_a[1]))); break;
         case 46: _t->saveClbRecordingTime(); break;
@@ -1452,151 +1454,131 @@ void OCTSettings::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
+        void **func = reinterpret_cast<void **>(_a[1]);
         {
             typedef void (OCTSettings::*_t)(const int & );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&OCTSettings::clbRecordingTimeChanged)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&OCTSettings::clbRecordingTimeChanged)) {
                 *result = 0;
-                return;
             }
         }
         {
             typedef void (OCTSettings::*_t)(const int & );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&OCTSettings::tstRecordingTimeChanged)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&OCTSettings::tstRecordingTimeChanged)) {
                 *result = 1;
-                return;
             }
         }
         {
             typedef void (OCTSettings::*_t)(const int & );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&OCTSettings::stimulusSizeChanged)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&OCTSettings::stimulusSizeChanged)) {
                 *result = 2;
-                return;
             }
         }
         {
             typedef void (OCTSettings::*_t)(const int & );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&OCTSettings::fixedPointSizeChanged)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&OCTSettings::fixedPointSizeChanged)) {
                 *result = 3;
-                return;
             }
         }
         {
             typedef void (OCTSettings::*_t)(const int & );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&OCTSettings::lapsChanged)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&OCTSettings::lapsChanged)) {
                 *result = 4;
-                return;
             }
         }
         {
             typedef void (OCTSettings::*_t)(const int & );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&OCTSettings::timesChanged)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&OCTSettings::timesChanged)) {
                 *result = 5;
-                return;
             }
         }
         {
             typedef void (OCTSettings::*_t)(const int & );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&OCTSettings::testTimeChanged)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&OCTSettings::testTimeChanged)) {
                 *result = 6;
-                return;
             }
         }
         {
             typedef void (OCTSettings::*_t)(const int & );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&OCTSettings::img1PathChanged)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&OCTSettings::img1PathChanged)) {
                 *result = 7;
-                return;
             }
         }
         {
             typedef void (OCTSettings::*_t)(const int & );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&OCTSettings::img2PathChanged)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&OCTSettings::img2PathChanged)) {
                 *result = 8;
-                return;
             }
         }
         {
             typedef void (OCTSettings::*_t)(const int & );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&OCTSettings::img3PathChanged)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&OCTSettings::img3PathChanged)) {
                 *result = 9;
-                return;
             }
         }
         {
             typedef void (OCTSettings::*_t)(const int & );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&OCTSettings::img4PathChanged)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&OCTSettings::img4PathChanged)) {
                 *result = 10;
-                return;
             }
         }
         {
             typedef void (OCTSettings::*_t)(const int & );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&OCTSettings::img5PathChanged)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&OCTSettings::img5PathChanged)) {
                 *result = 11;
-                return;
             }
         }
         {
             typedef void (OCTSettings::*_t)(const int & );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&OCTSettings::img6PathChanged)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&OCTSettings::img6PathChanged)) {
                 *result = 12;
-                return;
             }
         }
         {
             typedef void (OCTSettings::*_t)(const int & );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&OCTSettings::img7PathChanged)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&OCTSettings::img7PathChanged)) {
                 *result = 13;
-                return;
             }
         }
         {
             typedef void (OCTSettings::*_t)(const int & );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&OCTSettings::img8PathChanged)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&OCTSettings::img8PathChanged)) {
                 *result = 14;
-                return;
             }
         }
         {
             typedef void (OCTSettings::*_t)(const int & );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&OCTSettings::img9PathChanged)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&OCTSettings::img9PathChanged)) {
                 *result = 15;
-                return;
             }
         }
         {
             typedef void (OCTSettings::*_t)(const int & );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&OCTSettings::img10PathChanged)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&OCTSettings::img10PathChanged)) {
                 *result = 16;
-                return;
             }
         }
         {
             typedef void (OCTSettings::*_t)(const int & );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&OCTSettings::degrees2pxChanged)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&OCTSettings::degrees2pxChanged)) {
                 *result = 17;
-                return;
             }
         }
         {
             typedef void (OCTSettings::*_t)(const int & );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&OCTSettings::screenWidthChanged)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&OCTSettings::screenWidthChanged)) {
                 *result = 18;
-                return;
             }
         }
         {
             typedef void (OCTSettings::*_t)(const int & );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&OCTSettings::screenDistanceChanged)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&OCTSettings::screenDistanceChanged)) {
                 *result = 19;
-                return;
             }
         }
         {
             typedef void (OCTSettings::*_t)(const int & );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&OCTSettings::resolutionChanged)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&OCTSettings::resolutionChanged)) {
                 *result = 20;
-                return;
             }
         }
     }
@@ -1665,7 +1647,7 @@ void OCTSettings::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
 
 const QMetaObject OCTSettings::staticMetaObject = {
     { &QObject::staticMetaObject, qt_meta_stringdata_OCTSettings.data,
-      qt_meta_data_OCTSettings,  qt_static_metacall, nullptr, nullptr}
+      qt_meta_data_OCTSettings,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
 };
 
 
@@ -1676,9 +1658,9 @@ const QMetaObject *OCTSettings::metaObject() const
 
 void *OCTSettings::qt_metacast(const char *_clname)
 {
-    if (!_clname) return nullptr;
+    if (!_clname) return Q_NULLPTR;
     if (!strcmp(_clname, qt_meta_stringdata_OCTSettings.stringdata0))
-        return static_cast<void*>(this);
+        return static_cast<void*>(const_cast< OCTSettings*>(this));
     return QObject::qt_metacast(_clname);
 }
 
@@ -1719,147 +1701,147 @@ int OCTSettings::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 // SIGNAL 0
 void OCTSettings::clbRecordingTimeChanged(const int & _t1)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 
 // SIGNAL 1
 void OCTSettings::tstRecordingTimeChanged(const int & _t1)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 1, _a);
 }
 
 // SIGNAL 2
 void OCTSettings::stimulusSizeChanged(const int & _t1)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 2, _a);
 }
 
 // SIGNAL 3
 void OCTSettings::fixedPointSizeChanged(const int & _t1)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 3, _a);
 }
 
 // SIGNAL 4
 void OCTSettings::lapsChanged(const int & _t1)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 4, _a);
 }
 
 // SIGNAL 5
 void OCTSettings::timesChanged(const int & _t1)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 5, _a);
 }
 
 // SIGNAL 6
 void OCTSettings::testTimeChanged(const int & _t1)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 6, _a);
 }
 
 // SIGNAL 7
 void OCTSettings::img1PathChanged(const int & _t1)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 7, _a);
 }
 
 // SIGNAL 8
 void OCTSettings::img2PathChanged(const int & _t1)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 8, _a);
 }
 
 // SIGNAL 9
 void OCTSettings::img3PathChanged(const int & _t1)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 9, _a);
 }
 
 // SIGNAL 10
 void OCTSettings::img4PathChanged(const int & _t1)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 10, _a);
 }
 
 // SIGNAL 11
 void OCTSettings::img5PathChanged(const int & _t1)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 11, _a);
 }
 
 // SIGNAL 12
 void OCTSettings::img6PathChanged(const int & _t1)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 12, _a);
 }
 
 // SIGNAL 13
 void OCTSettings::img7PathChanged(const int & _t1)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 13, _a);
 }
 
 // SIGNAL 14
 void OCTSettings::img8PathChanged(const int & _t1)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 14, _a);
 }
 
 // SIGNAL 15
 void OCTSettings::img9PathChanged(const int & _t1)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 15, _a);
 }
 
 // SIGNAL 16
 void OCTSettings::img10PathChanged(const int & _t1)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 16, _a);
 }
 
 // SIGNAL 17
 void OCTSettings::degrees2pxChanged(const int & _t1)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 17, _a);
 }
 
 // SIGNAL 18
 void OCTSettings::screenWidthChanged(const int & _t1)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 18, _a);
 }
 
 // SIGNAL 19
 void OCTSettings::screenDistanceChanged(const int & _t1)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 19, _a);
 }
 
 // SIGNAL 20
 void OCTSettings::resolutionChanged(const int & _t1)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 20, _a);
 }
 struct qt_meta_stringdata_OTemporalValues_t {
@@ -1991,15 +1973,15 @@ void OTemporalValues::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
         case 3: _t->testVariantChanged((*reinterpret_cast< const int(*)>(_a[1]))); break;
         case 4: _t->clbPointsChanged((*reinterpret_cast< const int(*)>(_a[1]))); break;
         case 5: { int _r = _t->testType();
-            if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< int*>(_a[0]) = _r; }  break;
         case 6: { int _r = _t->taskType();
-            if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< int*>(_a[0]) = _r; }  break;
         case 7: { int _r = _t->testDisplayMode();
-            if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< int*>(_a[0]) = _r; }  break;
         case 8: { int _r = _t->testVariant();
-            if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< int*>(_a[0]) = _r; }  break;
         case 9: { int _r = _t->clbPoints();
-            if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< int*>(_a[0]) = _r; }  break;
         case 10: _t->setTestType((*reinterpret_cast< const int(*)>(_a[1]))); break;
         case 11: _t->setTaskType((*reinterpret_cast< const int(*)>(_a[1]))); break;
         case 12: _t->setTestDisplayMode((*reinterpret_cast< const int(*)>(_a[1]))); break;
@@ -2009,39 +1991,35 @@ void OTemporalValues::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
+        void **func = reinterpret_cast<void **>(_a[1]);
         {
             typedef void (OTemporalValues::*_t)(const int & );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&OTemporalValues::testTypeChanged)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&OTemporalValues::testTypeChanged)) {
                 *result = 0;
-                return;
             }
         }
         {
             typedef void (OTemporalValues::*_t)(const int & );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&OTemporalValues::taskTypeChanged)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&OTemporalValues::taskTypeChanged)) {
                 *result = 1;
-                return;
             }
         }
         {
             typedef void (OTemporalValues::*_t)(const int & );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&OTemporalValues::testDisplayModeChanged)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&OTemporalValues::testDisplayModeChanged)) {
                 *result = 2;
-                return;
             }
         }
         {
             typedef void (OTemporalValues::*_t)(const int & );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&OTemporalValues::testVariantChanged)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&OTemporalValues::testVariantChanged)) {
                 *result = 3;
-                return;
             }
         }
         {
             typedef void (OTemporalValues::*_t)(const int & );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&OTemporalValues::clbPointsChanged)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&OTemporalValues::clbPointsChanged)) {
                 *result = 4;
-                return;
             }
         }
     }
@@ -2079,7 +2057,7 @@ void OTemporalValues::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
 
 const QMetaObject OTemporalValues::staticMetaObject = {
     { &QObject::staticMetaObject, qt_meta_stringdata_OTemporalValues.data,
-      qt_meta_data_OTemporalValues,  qt_static_metacall, nullptr, nullptr}
+      qt_meta_data_OTemporalValues,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
 };
 
 
@@ -2090,9 +2068,9 @@ const QMetaObject *OTemporalValues::metaObject() const
 
 void *OTemporalValues::qt_metacast(const char *_clname)
 {
-    if (!_clname) return nullptr;
+    if (!_clname) return Q_NULLPTR;
     if (!strcmp(_clname, qt_meta_stringdata_OTemporalValues.stringdata0))
-        return static_cast<void*>(this);
+        return static_cast<void*>(const_cast< OTemporalValues*>(this));
     return QObject::qt_metacast(_clname);
 }
 
@@ -2133,35 +2111,35 @@ int OTemporalValues::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 // SIGNAL 0
 void OTemporalValues::testTypeChanged(const int & _t1)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 
 // SIGNAL 1
 void OTemporalValues::taskTypeChanged(const int & _t1)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 1, _a);
 }
 
 // SIGNAL 2
 void OTemporalValues::testDisplayModeChanged(const int & _t1)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 2, _a);
 }
 
 // SIGNAL 3
 void OTemporalValues::testVariantChanged(const int & _t1)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 3, _a);
 }
 
 // SIGNAL 4
 void OTemporalValues::clbPointsChanged(const int & _t1)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 4, _a);
 }
 struct qt_meta_stringdata_oscannCursorWrapper_t {
@@ -2265,7 +2243,7 @@ void oscannCursorWrapper::qt_static_metacall(QObject *_o, QMetaObject::Call _c, 
 
 const QMetaObject oscannCursorWrapper::staticMetaObject = {
     { &QObject::staticMetaObject, qt_meta_stringdata_oscannCursorWrapper.data,
-      qt_meta_data_oscannCursorWrapper,  qt_static_metacall, nullptr, nullptr}
+      qt_meta_data_oscannCursorWrapper,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
 };
 
 
@@ -2276,9 +2254,9 @@ const QMetaObject *oscannCursorWrapper::metaObject() const
 
 void *oscannCursorWrapper::qt_metacast(const char *_clname)
 {
-    if (!_clname) return nullptr;
+    if (!_clname) return Q_NULLPTR;
     if (!strcmp(_clname, qt_meta_stringdata_oscannCursorWrapper.stringdata0))
-        return static_cast<void*>(this);
+        return static_cast<void*>(const_cast< oscannCursorWrapper*>(this));
     return QObject::qt_metacast(_clname);
 }
 
@@ -2298,5 +2276,4 @@ int oscannCursorWrapper::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     }
     return _id;
 }
-QT_WARNING_POP
 QT_END_MOC_NAMESPACE

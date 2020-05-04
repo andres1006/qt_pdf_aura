@@ -5,9 +5,10 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport
 
 CONFIG += c++11 console
 CONFIG -= app_bundle
-CONFIG +=qml_debug
+#CONFIG +=qml_debug
+CONFIG -= gui
 
-DEFINES += QT_DEPRECATED_WARNINGS
+#DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += main.cpp \
     process.cpp \
@@ -22,12 +23,15 @@ SOURCES += main.cpp \
     qcustomplot.cpp \
     videopreview.cpp
 
+INCLUDEPATH +=    /usr/local/include/opencv4 \
+                  /usr/local/include \
+                  /usr/local/include/bsoncxx/v_noabi \
+                  /usr/local/include/mongocxx/v_noabi \
+
 
 LIBS += \
     -L/usr/local/lib \
-    -L/usr/local/lib -lopencv_core -lopencv_highgui -lopencv_imgproc -lopencv_videoio -lopencv_imgcodecs \
-    -lmongocxx \
-    -lbsoncxx \
+    -L/usr/local/lib -lopencv_core -lopencv_highgui -lopencv_imgproc -lopencv_videoio -lopencv_imgcodecs -lmongocxx -lbsoncxx \
 
 HEADERS += \
     data.h \

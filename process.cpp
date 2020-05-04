@@ -71,7 +71,13 @@ void process::sendToDB(OData *data, QString sessionName, QString testName, QStri
         qDebug()<<"Step 2";
 
         //mongocxx::client client(mongocxx::uri(QString("mongodb://oscann:CuevaErikSilviaPablo@%1:%2/?authSource=admin&authMechanism=SCRAM-SHA-1").arg(mongoUrl).arg(mongoPort).toLatin1().data()));
-        mongocxx::client client(mongocxx::uri("mongodb://localhost:27017"));
+        //mongocxx::client client(mongocxx::uri("mongodb://localhost:27017"));
+
+	//Cadena de conexión a Mongo server
+	mongocxx::instance instance{}; // This should be done only once.
+	mongocxx::uri uri("mongodb://localhost:27017");
+	mongocxx::client client(uri);
+
         qDebug()<<"Step 3";
         auto db = client["tests"];
         qDebug()<<"Step 4";

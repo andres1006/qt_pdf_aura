@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'data.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.9.5)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.5.1)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,14 +12,12 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'data.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.9.5. It"
+#error "This file was generated using the moc from 5.5.1. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
 
 QT_BEGIN_MOC_NAMESPACE
-QT_WARNING_PUSH
-QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_OData_t {
     QByteArrayData data[43];
     char stringdata0[502];
@@ -194,54 +192,54 @@ void OData::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void 
         case 0: _t->setClbFileName((*reinterpret_cast< const QString(*)>(_a[1]))); break;
         case 1: _t->setTstFileName((*reinterpret_cast< const QString(*)>(_a[1]))); break;
         case 2: { QString _r = _t->tstFileName();
-            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = _r; }  break;
         case 3: { QString _r = _t->clbFileName();
-            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = _r; }  break;
         case 4: { uint _r = _t->clbFails();
-            if (_a[0]) *reinterpret_cast< uint*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< uint*>(_a[0]) = _r; }  break;
         case 5: { uint _r = _t->tstFails();
-            if (_a[0]) *reinterpret_cast< uint*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< uint*>(_a[0]) = _r; }  break;
         case 6: { bool _r = _t->blkDefined();
-            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = _r; }  break;
         case 7: { int _r = _t->open((*reinterpret_cast< bool(*)>(_a[1])));
-            if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< int*>(_a[0]) = _r; }  break;
         case 8: { QString _r = _t->getLastError();
-            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = _r; }  break;
         case 9: _t->exportCsv(); break;
         case 10: _t->importCsv(); break;
         case 11: { bool _r = _t->removeTestFolder((*reinterpret_cast< QString(*)>(_a[1])));
-            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = _r; }  break;
         case 12: { QString _r = _t->folderExistance((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])));
-            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = _r; }  break;
         case 13: _t->exportFolder((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2]))); break;
         case 14: _t->setTestPath((*reinterpret_cast< const QString(*)>(_a[1])),(*reinterpret_cast< const QString(*)>(_a[2]))); break;
         case 15: { QString _r = _t->getTestPath();
-            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = _r; }  break;
         case 16: _t->setpathology((*reinterpret_cast< const QString(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
         case 17: { QString _r = _t->getpathology((*reinterpret_cast< int(*)>(_a[1])));
-            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = _r; }  break;
         case 18: { bool _r = _t->isEmptypathology();
-            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = _r; }  break;
         case 19: _t->setAge((*reinterpret_cast< const int(*)>(_a[1]))); break;
         case 20: { int _r = _t->getAge();
-            if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< int*>(_a[0]) = _r; }  break;
         case 21: { bool _r = _t->getHeadTremor();
-            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = _r; }  break;
         case 22: _t->setHeadTremor((*reinterpret_cast< bool(*)>(_a[1]))); break;
         case 23: _t->setSessionName((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 24: { QString _r = _t->getSessionName();
-            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = _r; }  break;
         case 25: _t->pushback_testPathology((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 26: _t->setTestPathology((*reinterpret_cast< QStringList(*)>(_a[1]))); break;
         case 27: _t->addTestPathology((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 28: { QString _r = _t->getTestPathology((*reinterpret_cast< const int(*)>(_a[1])));
-            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = _r; }  break;
         case 29: { QStringList _r = _t->getTestPathologyList();
-            if (_a[0]) *reinterpret_cast< QStringList*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< QStringList*>(_a[0]) = _r; }  break;
         case 30: { QStringList _r = _t->checkAllTest((*reinterpret_cast< QStringList(*)>(_a[1])));
-            if (_a[0]) *reinterpret_cast< QStringList*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< QStringList*>(_a[0]) = _r; }  break;
         case 31: { QStringList _r = _t->getPatientDetails();
-            if (_a[0]) *reinterpret_cast< QStringList*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< QStringList*>(_a[0]) = _r; }  break;
         default: ;
         }
     }
@@ -271,7 +269,7 @@ void OData::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void 
 
 const QMetaObject OData::staticMetaObject = {
     { &QObject::staticMetaObject, qt_meta_stringdata_OData.data,
-      qt_meta_data_OData,  qt_static_metacall, nullptr, nullptr}
+      qt_meta_data_OData,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
 };
 
 
@@ -282,9 +280,9 @@ const QMetaObject *OData::metaObject() const
 
 void *OData::qt_metacast(const char *_clname)
 {
-    if (!_clname) return nullptr;
+    if (!_clname) return Q_NULLPTR;
     if (!strcmp(_clname, qt_meta_stringdata_OData.stringdata0))
-        return static_cast<void*>(this);
+        return static_cast<void*>(const_cast< OData*>(this));
     return QObject::qt_metacast(_clname);
 }
 
@@ -321,5 +319,4 @@ int OData::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 #endif // QT_NO_PROPERTIES
     return _id;
 }
-QT_WARNING_POP
 QT_END_MOC_NAMESPACE

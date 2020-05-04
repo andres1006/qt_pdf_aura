@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'videopreview.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.9.5)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.5.1)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,14 +12,12 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'videopreview.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.9.5. It"
+#error "This file was generated using the moc from 5.5.1. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
 
 QT_BEGIN_MOC_NAMESPACE
-QT_WARNING_PUSH
-QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_videoPreview_t {
     QByteArrayData data[16];
     char stringdata0[119];
@@ -112,7 +110,7 @@ void videoPreview::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         switch (_id) {
         case 0: _t->newPos((*reinterpret_cast< const int(*)>(_a[1]))); break;
         case 1: { bool _r = _t->openVideo((*reinterpret_cast< const QString(*)>(_a[1])));
-            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = _r; }  break;
         case 2: _t->updateImage(); break;
         case 3: _t->stop(); break;
         case 4: _t->pause(); break;
@@ -136,11 +134,11 @@ void videoPreview::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
+        void **func = reinterpret_cast<void **>(_a[1]);
         {
             typedef void (videoPreview::*_t)(const int );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&videoPreview::newPos)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&videoPreview::newPos)) {
                 *result = 0;
-                return;
             }
         }
     }
@@ -148,7 +146,7 @@ void videoPreview::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
 
 const QMetaObject videoPreview::staticMetaObject = {
     { &QQuickItem::staticMetaObject, qt_meta_stringdata_videoPreview.data,
-      qt_meta_data_videoPreview,  qt_static_metacall, nullptr, nullptr}
+      qt_meta_data_videoPreview,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
 };
 
 
@@ -159,9 +157,9 @@ const QMetaObject *videoPreview::metaObject() const
 
 void *videoPreview::qt_metacast(const char *_clname)
 {
-    if (!_clname) return nullptr;
+    if (!_clname) return Q_NULLPTR;
     if (!strcmp(_clname, qt_meta_stringdata_videoPreview.stringdata0))
-        return static_cast<void*>(this);
+        return static_cast<void*>(const_cast< videoPreview*>(this));
     return QQuickItem::qt_metacast(_clname);
 }
 
@@ -185,8 +183,7 @@ int videoPreview::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 // SIGNAL 0
 void videoPreview::newPos(const int _t1)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
-QT_WARNING_POP
 QT_END_MOC_NAMESPACE

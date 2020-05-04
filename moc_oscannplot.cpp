@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'oscannplot.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.9.5)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.5.1)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,14 +12,12 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'oscannplot.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.9.5. It"
+#error "This file was generated using the moc from 5.5.1. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
 
 QT_BEGIN_MOC_NAMESPACE
-QT_WARNING_PUSH
-QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_OscannPlot_t {
     QByteArrayData data[84];
     char stringdata0[882];
@@ -335,34 +333,34 @@ void OscannPlot::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 23: _t->updateData(); break;
         case 24: _t->setData((*reinterpret_cast< OData*(*)>(_a[1]))); break;
         case 25: { bool _r = _t->loadCsv((*reinterpret_cast< QString(*)>(_a[1])));
-            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = _r; }  break;
         case 26: { bool _r = _t->checkScreen();
-            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = _r; }  break;
         case 27: _t->calibScatter(); break;
         case 28: { int _r = _t->getType();
-            if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< int*>(_a[0]) = _r; }  break;
         case 29: { double _r = _t->getDeg2Px();
-            if (_a[0]) *reinterpret_cast< double*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< double*>(_a[0]) = _r; }  break;
         case 30: { QCustomPlot* _r = _t->getCustomPlot();
-            if (_a[0]) *reinterpret_cast< QCustomPlot**>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< QCustomPlot**>(_a[0]) = _r; }  break;
         case 31: _t->openInExplorer(); break;
         case 32: _t->autoScale((*reinterpret_cast< bool(*)>(_a[1])),(*reinterpret_cast< uint(*)>(_a[2]))); break;
         case 33: _t->autoScale((*reinterpret_cast< bool(*)>(_a[1]))); break;
         case 34: _t->autoScale(); break;
         case 35: _t->changeColor(); break;
         case 36: { QPoint _r = _t->setScreen((*reinterpret_cast< QString(*)>(_a[1])));
-            if (_a[0]) *reinterpret_cast< QPoint*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< QPoint*>(_a[0]) = _r; }  break;
         case 37: { double _r = _t->loadDistance((*reinterpret_cast< QString(*)>(_a[1])));
-            if (_a[0]) *reinterpret_cast< double*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< double*>(_a[0]) = _r; }  break;
         case 38: { double _r = _t->loadWidth((*reinterpret_cast< QString(*)>(_a[1])));
-            if (_a[0]) *reinterpret_cast< double*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< double*>(_a[0]) = _r; }  break;
         case 39: _t->changeRaw((*reinterpret_cast< bool(*)>(_a[1]))); break;
         case 40: _t->removeVectors(); break;
         case 41: _t->clearAll(); break;
         case 42: _t->clearPlot(); break;
         case 43: _t->setZoomMode((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 44: { bool _r = _t->picExists((*reinterpret_cast< QString(*)>(_a[1])));
-            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = _r; }  break;
         case 45: _t->savePlot((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3])),(*reinterpret_cast< QColor(*)>(_a[4]))); break;
         case 46: _t->savePlot((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3]))); break;
         case 47: _t->savePlot((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
@@ -371,19 +369,19 @@ void OscannPlot::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 50: _t->keyRelease((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 51: _t->capturePupil(); break;
         case 52: { QString _r = _t->fastCalib((*reinterpret_cast< QString(*)>(_a[1])));
-            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = _r; }  break;
         case 53: { QStringList _r = _t->searchTests((*reinterpret_cast< QString(*)>(_a[1])));
-            if (_a[0]) *reinterpret_cast< QStringList*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< QStringList*>(_a[0]) = _r; }  break;
         case 54: { QStringList _r = _t->processFolder((*reinterpret_cast< QString(*)>(_a[1])));
-            if (_a[0]) *reinterpret_cast< QStringList*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< QStringList*>(_a[0]) = _r; }  break;
         case 55: { QStringList _r = _t->processCsv((*reinterpret_cast< QString(*)>(_a[1])));
-            if (_a[0]) *reinterpret_cast< QStringList*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< QStringList*>(_a[0]) = _r; }  break;
         case 56: _t->setLayoutDim((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
         case 57: _t->setCreatingPdf((*reinterpret_cast< const bool(*)>(_a[1]))); break;
         case 58: _t->updatePointerPosition((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 59: _t->setVideoPreviewer((*reinterpret_cast< videoPreview*(*)>(_a[1]))); break;
         case 60: { bool _r = _t->isEmptySessionName();
-            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
+            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = _r; }  break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
@@ -406,60 +404,53 @@ void OscannPlot::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
+        void **func = reinterpret_cast<void **>(_a[1]);
         {
             typedef void (OscannPlot::*_t)(int );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&OscannPlot::zoomChanged)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&OscannPlot::zoomChanged)) {
                 *result = 0;
-                return;
             }
         }
         {
             typedef void (OscannPlot::*_t)();
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&OscannPlot::beginProcess)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&OscannPlot::beginProcess)) {
                 *result = 1;
-                return;
             }
         }
         {
             typedef void (OscannPlot::*_t)(double );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&OscannPlot::processed)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&OscannPlot::processed)) {
                 *result = 2;
-                return;
             }
         }
         {
             typedef void (OscannPlot::*_t)(bool );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&OscannPlot::autoPic)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&OscannPlot::autoPic)) {
                 *result = 3;
-                return;
             }
         }
         {
             typedef void (OscannPlot::*_t)(bool );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&OscannPlot::newText)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&OscannPlot::newText)) {
                 *result = 4;
-                return;
             }
         }
         {
             typedef void (OscannPlot::*_t)(int , bool , bool , bool );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&OscannPlot::showMenu)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&OscannPlot::showMenu)) {
                 *result = 5;
-                return;
             }
         }
         {
             typedef void (OscannPlot::*_t)();
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&OscannPlot::clbScatterAbleChange)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&OscannPlot::clbScatterAbleChange)) {
                 *result = 6;
-                return;
             }
         }
         {
             typedef void (OscannPlot::*_t)();
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&OscannPlot::sessionNameChange)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&OscannPlot::sessionNameChange)) {
                 *result = 7;
-                return;
             }
         }
     }
@@ -489,7 +480,7 @@ void OscannPlot::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
 
 const QMetaObject OscannPlot::staticMetaObject = {
     { &QQuickPaintedItem::staticMetaObject, qt_meta_stringdata_OscannPlot.data,
-      qt_meta_data_OscannPlot,  qt_static_metacall, nullptr, nullptr}
+      qt_meta_data_OscannPlot,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
 };
 
 
@@ -500,9 +491,9 @@ const QMetaObject *OscannPlot::metaObject() const
 
 void *OscannPlot::qt_metacast(const char *_clname)
 {
-    if (!_clname) return nullptr;
+    if (!_clname) return Q_NULLPTR;
     if (!strcmp(_clname, qt_meta_stringdata_OscannPlot.stringdata0))
-        return static_cast<void*>(this);
+        return static_cast<void*>(const_cast< OscannPlot*>(this));
     return QQuickPaintedItem::qt_metacast(_clname);
 }
 
@@ -543,54 +534,53 @@ int OscannPlot::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 // SIGNAL 0
 void OscannPlot::zoomChanged(int _t1)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 
 // SIGNAL 1
 void OscannPlot::beginProcess()
 {
-    QMetaObject::activate(this, &staticMetaObject, 1, nullptr);
+    QMetaObject::activate(this, &staticMetaObject, 1, Q_NULLPTR);
 }
 
 // SIGNAL 2
 void OscannPlot::processed(double _t1)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 2, _a);
 }
 
 // SIGNAL 3
 void OscannPlot::autoPic(bool _t1)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 3, _a);
 }
 
 // SIGNAL 4
 void OscannPlot::newText(bool _t1)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 4, _a);
 }
 
 // SIGNAL 5
 void OscannPlot::showMenu(int _t1, bool _t2, bool _t3, bool _t4)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)), const_cast<void*>(reinterpret_cast<const void*>(&_t3)), const_cast<void*>(reinterpret_cast<const void*>(&_t4)) };
+    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)), const_cast<void*>(reinterpret_cast<const void*>(&_t3)), const_cast<void*>(reinterpret_cast<const void*>(&_t4)) };
     QMetaObject::activate(this, &staticMetaObject, 5, _a);
 }
 
 // SIGNAL 6
 void OscannPlot::clbScatterAbleChange()
 {
-    QMetaObject::activate(this, &staticMetaObject, 6, nullptr);
+    QMetaObject::activate(this, &staticMetaObject, 6, Q_NULLPTR);
 }
 
 // SIGNAL 7
 void OscannPlot::sessionNameChange()
 {
-    QMetaObject::activate(this, &staticMetaObject, 7, nullptr);
+    QMetaObject::activate(this, &staticMetaObject, 7, Q_NULLPTR);
 }
-QT_WARNING_POP
 QT_END_MOC_NAMESPACE

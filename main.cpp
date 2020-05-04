@@ -19,7 +19,6 @@
 
 int main(int argc, char *argv[])
 {
-
     QApplication app(argc, argv);
 
 /*
@@ -65,6 +64,7 @@ Prueba subida datos a Mongo DB: los archivos necesarios para esta parte son: log
 /*
 Prueba generacion de pdf: archivos necesarios pdfreport.cpp/.h, oscannplot.cpp/.h, qcustomplot.cpp/.h, videopreview.cpp/.h
 */
+
     qDebug("step 1...");
     pdfreport *pdf = new pdfreport;
     qDebug("step 2...");
@@ -78,7 +78,7 @@ Prueba generacion de pdf: archivos necesarios pdfreport.cpp/.h, oscannplot.cpp/.
     qDebug("step 6...");
     int n_test = pdf->testParams(qml_pdf_tests);
     qDebug("step 7...");
-    pdf->newReport(argv[3]); //Rango de edades del paciente
+    pdf->newReport(argv[3]); //Ruta a la carpeta del paciente
     qDebug("step 8...");
 
 }
