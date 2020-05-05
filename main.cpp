@@ -65,6 +65,7 @@ Prueba subida datos a Mongo DB: los archivos necesarios para esta parte son: log
 /*
 Prueba generacion de pdf: archivos necesarios pdfreport.cpp/.h, oscannplot.cpp/.h, qcustomplot.cpp/.h, videopreview.cpp/.h
 */
+    mongocxx::instance instance{}; // This should be done only once.
     qDebug("step 1...");
     pdfreport *pdf = new pdfreport;
     qDebug("step 2...");

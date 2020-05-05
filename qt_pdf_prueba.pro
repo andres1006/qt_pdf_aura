@@ -5,9 +5,14 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport
 
 CONFIG += c++11 console
 CONFIG -= app_bundle
-CONFIG +=qml_debug
+#CONFIG +=qml_debug
+CONFIG += qt warn_off release
 
-DEFINES += QT_DEPRECATED_WARNINGS
+
+DEFINES += QT_NO_DEBUG_OUTPUT
+DEFINES += QT_NO_DEBUG
+
+#DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += main.cpp \
     process.cpp \
@@ -21,6 +26,8 @@ SOURCES += main.cpp \
     oscannplot.cpp \
     qcustomplot.cpp \
     videopreview.cpp
+
+INCLUDEPATH += /usr/local/include/opencv4/
 
 
 LIBS += \

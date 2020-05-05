@@ -51,7 +51,7 @@ class pdfReportHelper
 
 public:
     pdfReportHelper(QPdfWriter&);
-    void newPDF(QPdfWriter&,QPair<QVector<QPixmap>, QPair<QVector<QStringList>, QVector<QStringList>>>,QStringList = QStringList(), bool=false);
+    void newPDF(QPdfWriter&,QPair<QVector<QPixmap>, QPair<QVector<QStringList>, QVector<QStringList>>>,QStringList = QStringList(), bool=false, bool=false);
     void drawTable(QStringList, QStringList, QRect);
     //NOTE: QStaticText can only represent text, so only HTML tags which alter the layout or appearance of the text will be respected.
     //      Adding an image to the input HTML, for instance, will cause the image to be included as part of the layout, affecting the

@@ -29,7 +29,7 @@ pdfReportHelper::pdfReportHelper(QPdfWriter& pdfWriter)
 void pdfReportHelper::newPDF(QPdfWriter &pdfWr,
                              QPair<QVector<QPixmap>, QPair<QVector<QStringList>, QVector<QStringList>>> info,
                              QStringList simpleList,
-                             bool repeatList){
+                             bool repeatList, bool differential){
     int hGraph=62;
     double tableHeight;
     int p1Padding = 5;
@@ -81,6 +81,21 @@ void pdfReportHelper::newPDF(QPdfWriter &pdfWr,
                                                                                        pdfWr.width()/3 + 500,                   //width
                                                                                        150));
     }
+
+    QRect limitRectangle2(p1Padding*mm2pp, (250+p1Padding)*mm2pp,200*mm2pp,65*mm2pp);
+    QStringList message;
+    if (differential)
+    {
+        message.append("(*)OSCANN is a tool to facilitate diagnosis and interpretation should be made by qualified doctors. "
+                       "Diagnosis and management of neurological disorders should always be performed by qualified doctors. "
+                       "Algorithms pending of certification from AEMPS.");
+    } else {
+        message.append("(*)OSCANN is a tool to facilitate diagnosis and interpretation should be made by qualified doctors. "
+                       "Diagnosis and management of neurological disorders should always be performed by qualified doctors. ");
+    }
+    font.setPointSize(6);
+    painter.setFont(font);
+    drawSimpleList(message, limitRectangle2);
 }
 
 

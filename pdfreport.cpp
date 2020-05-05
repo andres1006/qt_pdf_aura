@@ -26,7 +26,8 @@ QStringList pdfreport::dbPatients(QString pathology){
     m_pathology = pathology;
     m_patient.clear();
     //mongocxx::client client(mongocxx::uri(QString("mongodb://oscann:CuevaErikSilviaPablo@%1:%2/?authSource=admin&authMechanism=SCRAM-SHA-1").arg(m_mongoUrl).arg(m_mongoPort).toLatin1().data()));
-     mongocxx::client client(mongocxx::uri("mongodb://localhost:27017"));
+    mongocxx::uri uri("mongodb://localhost:27017");
+    mongocxx::client client(uri);
     mongocxx::database db = client["datos"];
     mongocxx::collection coll;
     mongocxx::options::find opts{};
@@ -52,7 +53,8 @@ QStringList pdfreport::availableTests(QString patient){
     m_patient.clear();
     m_patient = patient;
     //mongocxx::client client(mongocxx::uri(QString("mongodb://oscann:CuevaErikSilviaPablo@%1:%2/?authSource=admin&authMechanism=SCRAM-SHA-1").arg(m_mongoUrl).arg(m_mongoPort).toLatin1().data()));
-    mongocxx::client client(mongocxx::uri("mongodb://localhost:27017"));
+	mongocxx::uri uri("mongodb://localhost:27017");
+	mongocxx::client client(uri);
     mongocxx::database db = client["tests"];
     mongocxx::collection coll;
     bsoncxx::stdx::optional<bsoncxx::document::value> query;
@@ -112,7 +114,8 @@ QStringList pdfreport::availableTests(QString patient){
 
 void pdfreport::allParams(){
     //mongocxx::client client(mongocxx::uri(QString("mongodb://oscann:CuevaErikSilviaPablo@%1:%2/?authSource=admin&authMechanism=SCRAM-SHA-1").arg(m_mongoUrl).arg(m_mongoPort).toLatin1().data()));
-    mongocxx::client client(mongocxx::uri("mongodb://localhost:27017"));
+	mongocxx::uri uri("mongodb://localhost:27017");
+	mongocxx::client client(uri);
     mongocxx::database db = client["datos"];
     QString key;
     m_allParams.clear();
@@ -260,7 +263,7 @@ QString pdfreport::ImprimeInformeControl(int patologia_estudiada, int resultado)
     QString mensaje;
     QString texto;
 
-    double auc_media[] = { 0.9753, 0.9654, 0.8368, 0.9866, 0.9192, 0.8753 };
+    double accuracy[] = { 0.9753, 0.9654, 0.8368, 0.9866, 0.9192, 0.8753 };
     double IC_max[] = { 0.9985,0.9912,0.9916,0.9923,0.937,0.9265 };
     double IC_min[] = { 0.95, 0.9147, 0.6919, 0.9783, 0.8829, 0.8004 };
     double sensibilidad[] = { 1,1,0.85,1,0.94,1 };
@@ -270,49 +273,49 @@ QString pdfreport::ImprimeInformeControl(int patologia_estudiada, int resultado)
             mensaje += "Findings in the performed eye movement tests are not those expected for aged-matched controls.";
             mensaje += " In patients with cognitive complaints, the pattern found in eye movement performance is compatible with ";
             mensaje += "Alzheimer's disease.";
-            texto = QString(" [AUC: %1;  CI: [%2, %3];  Specificity: %4; Sensitivity: %5].").arg(auc_media[0]).arg(IC_min[0]).arg(IC_max[0]).arg(especificidad[0]).arg(sensibilidad[0]);
+            texto = QString(" [Accuracy: %1;  CI: [%2, %3];  Sensitivity: %4; Specificity: %5].(*)").arg(accuracy[0]).arg(IC_min[0]).arg(IC_max[0]).arg(sensibilidad[0]).arg(especificidad[0]);
             mensaje += texto;
         }
         else if (patologia_estudiada == 3 && resultado == 3) {
             mensaje += "Findings in the performed eye movement tests are not those expected for aged-matched controls.";
             mensaje += " In patients with cognitive complaints, the pattern found in eye movement performance is compatible with ";
             mensaje += "Parkinson's disease.\n";
-            texto = QString(" [AUC: %1;  CI: [%2, %3];  Specificity: %4; Sensitivity: %5].").arg(auc_media[3]).arg(IC_min[3]).arg(IC_max[3]).arg(especificidad[3]).arg(sensibilidad[3]);
+            texto = QString(" [Accuracy: %1;  CI: [%2, %3];  Sensitivity: %4; Specificity: %5].(*)").arg(accuracy[3]).arg(IC_min[3]).arg(IC_max[3]).arg(sensibilidad[3]).arg(especificidad[3]);
             mensaje += texto;
         }
         else if (patologia_estudiada == 5 && resultado == 5) {
             mensaje += "Findings in the performed eye movement tests are not those expected for aged-matched controls.";
             mensaje += " In patients with cognitive complaints, the pattern found in eye movement performance is compatible with ";
             mensaje += "Frontotemporal dementia.\n";
-            texto = QString(" [AUC: %1,  CI: [%2, %3],  Specificity: %4,  Sensitivity: %5].").arg(auc_media[1]).arg(IC_min[1]).arg(IC_max[1]).arg(especificidad[1]).arg(sensibilidad[1]);
+            texto = QString(" [Accuracy: %1,  CI: [%2, %3],  Sensitivity: %4,  Specificity: %5].(*)").arg(accuracy[1]).arg(IC_min[1]).arg(IC_max[1]).arg(sensibilidad[1]).arg(especificidad[1]);
             mensaje += texto;
         }
         else if (patologia_estudiada == 8 && resultado == 8) {
             mensaje += "Findings in the performed eye movement tests are not those expected for aged-matched controls.";
             mensaje += " In patients with cognitive complaints, the pattern found in eye movement performance is compatible with ";
             mensaje += "Minimal Hepatic Encephalopathy.\n";
-            texto = QString(" [AUC: %1;  CI: [%2, %3];  Specificity: %4; Sensitivity: %5].").arg(auc_media[5]).arg(IC_min[5]).arg(IC_max[5]).arg(especificidad[5]).arg(sensibilidad[5]);
+            texto = QString(" [Accuracy: %1;  CI: [%2, %3];  Sensitivity: %4; Specificity: %5].(*)").arg(accuracy[5]).arg(IC_min[5]).arg(IC_max[5]).arg(sensibilidad[5]).arg(especificidad[5]);
             mensaje += texto;
         }
         else if (patologia_estudiada == 9 && resultado == 9) {
             mensaje += "Findings in the performed eye movement tests are not those expected for aged-matched controls.";
             mensaje += " In patients with cognitive complaints, the pattern found in eye movement performance is compatible with ";
             mensaje += "Mild Cognitive Impairment.\n";
-            texto = QString(" [AUC: %1;  CI: [%2, %3];  Specificity: %4; Sensitivity: %5].").arg(auc_media[2]).arg(IC_min[2]).arg(IC_max[2]).arg(especificidad[2]).arg(sensibilidad[2]);
+            texto = QString(" [Accuracy: %1;  CI: [%2, %3];  Sensitivity: %4; Specificity: %5].(*)").arg(accuracy[2]).arg(IC_min[2]).arg(IC_max[2]).arg(sensibilidad[2]).arg(especificidad[2]);
             mensaje += texto;
         }
         else if (patologia_estudiada == 10 && resultado == 10) {
             mensaje += "Findings in the performed eye movement tests are not those expected for aged-matched controls.";
             mensaje += " In patients with cognitive complaints, the pattern found in eye movement performance is compatible with ";
             mensaje += "Parkinsonisms.\n";
-            texto = QString(" [AUC: %1;  CI: [%2, %3];  Specificity: %4; Sensitivity: %5].").arg(auc_media[4]).arg(IC_min[4]).arg(IC_max[4]).arg(especificidad[4]).arg(sensibilidad[4]);
+            texto = QString(" [Accuracy: %1;  CI: [%2, %3];  Sensitivity: %4; Specificity: %5].(*)").arg(accuracy[4]).arg(IC_min[4]).arg(IC_max[4]).arg(sensibilidad[4]).arg(especificidad[4]);
             mensaje += texto;
         }
         else
-            mensaje = "Error: OM Battery ID does not match with AI result.\n";
+            mensaje = "Error: OM Battery ID does not match with AI result.(*)\n";
     }
     else
-        mensaje += "El resultado de la bateria de movimiento ocular no presenta alteraciones y es compatible con los parametros de normalidad en el grupo de edad del paciente.\n";
+        mensaje += "Findings in the performed eye movement tests don't reveal disorders and are those expected for aged-matched controls.(*)\n";
 
     return mensaje;
 }
@@ -322,11 +325,11 @@ QString pdfreport::ImprimeInformeDiferencial(int patologia_estudiada1, int patol
     QString mensaje;
     QString texto;
 
-    double auc_media[] = { 0.9753, 0.9654, 0.8368, 0.9866 }; // POR DEFINIR!!!!!!!!!!!
-    double IC_max[] = { 0.9985,0.9912,0.9916,0.9923 };
-    double IC_min[] = { 0.95, 0.9147, 0.6919, 0.9783 };
-    double sensibilidad[] = { 1,1,0.85,1 };
-    double especificidad[] = { 0.95,0.9,0.78,0.95 };
+    double accuracy[] = { 0.889, 0.814, 0.86, 0.867 };
+    double IC_max[] = { 0.89,0.89,0.93,0.93 };
+    double IC_min[] = { 0.83, 0.86, 0.88, 0.80 };
+    double sensibilidad[] = { 0.89,0.85,0.82,1 };
+    double especificidad[] = { 0.89,0.78,0.88,0.7 };
 
     mensaje += "In this differential analysis, the pattern found in eye movement performance is compatible with ";
     if ((patologia_estudiada1 == 2 && patologia_estudiada2 == 5) || (patologia_estudiada1 == 5 && patologia_estudiada2 == 2)) {
@@ -335,7 +338,7 @@ QString pdfreport::ImprimeInformeDiferencial(int patologia_estudiada1, int patol
                 mensaje += "Alzheimer's Disease.\n";
             else if (resultado == 5)
                 mensaje += "Frontotempral Dementia.\n";
-            texto = QString(" [AUC: %1;  CI: [%2, %3];  Specificity: %4; Sensitivity: %5].").arg(auc_media[0]).arg(IC_min[0]).arg(IC_max[0]).arg(especificidad[0]).arg(sensibilidad[0]);
+            texto = QString(" [Accuracy: %1;  CI: [%2, %3];  Sensitivity: %4; Specificity: %5].\n NOT FOR DIAGNOSTIC USE.(*)").arg(accuracy[0]).arg(IC_min[0]).arg(IC_max[0]).arg(sensibilidad[0]).arg(especificidad[0]);
             mensaje += texto;
         }
         else
@@ -347,7 +350,7 @@ QString pdfreport::ImprimeInformeDiferencial(int patologia_estudiada1, int patol
                 mensaje += "Alzheimer's Disease.\n";
             else if (resultado == 9)
                 mensaje += "Mild Cognitive Impairment.\n";
-            texto = QString(" [AUC: %1;  CI: [%2, %3];  Specificity: %4; Sensitivity: %5].").arg(auc_media[1]).arg(IC_min[1]).arg(IC_max[1]).arg(especificidad[1]).arg(sensibilidad[1]);
+            texto = QString(" [Accuracy: %1;  CI: [%2, %3];  Sensitivity: %4; Specificity: %5].\n NOT FOR DIAGNOSTIC USE.(*)").arg(accuracy[1]).arg(IC_min[1]).arg(IC_max[1]).arg(sensibilidad[1]).arg(especificidad[1]);
             mensaje += texto;
         }
         else
@@ -359,7 +362,7 @@ QString pdfreport::ImprimeInformeDiferencial(int patologia_estudiada1, int patol
                 mensaje += "Frontotempral Dementia.\n";
             else if (resultado == 9)
                 mensaje += "Mild Cognitive Impairment.\n";
-            texto = QString(" [AUC: %1;  CI: [%2, %3];  Specificity: %4; Sensitivity: %5].").arg(auc_media[2]).arg(IC_min[2]).arg(IC_max[2]).arg(especificidad[2]).arg(sensibilidad[2]);
+            texto = QString(" [Accuracy: %1;  CI: [%2, %3];  Sensitivity: %4; Specificity: %5].\n NOT FOR DIAGNOSTIC USE.(*)").arg(accuracy[2]).arg(IC_min[2]).arg(IC_max[2]).arg(sensibilidad[2]).arg(especificidad[2]);
             mensaje += texto;
         }
         else
@@ -371,7 +374,7 @@ QString pdfreport::ImprimeInformeDiferencial(int patologia_estudiada1, int patol
                 mensaje += "Parkinson's Disease.\n";
             else if (resultado == 10)
                 mensaje += "Parkinsionisms.\n";
-            texto = QString(" [AUC: %1;  CI: [%2, %3];  Specificity: %4; Sensitivity: %5].").arg(auc_media[3]).arg(IC_min[3]).arg(IC_max[3]).arg(especificidad[3]).arg(sensibilidad[3]);
+            texto = QString(" [Accuracy: %1;  CI: [%2, %3];  Sensitivity: %4; Specificity: %5].\n NOT FOR DIAGNOSTIC USE.(*)").arg(accuracy[3]).arg(IC_min[3]).arg(IC_max[3]).arg(sensibilidad[3]).arg(especificidad[3]);
             mensaje += texto;
         }
         else
@@ -379,9 +382,6 @@ QString pdfreport::ImprimeInformeDiferencial(int patologia_estudiada1, int patol
     }
     return mensaje;
 }
-
-
-
 
 /**
   *   @brief  Genera un reporte PDF
@@ -423,11 +423,9 @@ void pdfreport::newReport(QString filePathJson){
     /////////////////////////////////////////////
     /// \brief pdfWr
     //TODO: Open a FileDialog to select destination
-    qDebug()<<"paso 1";
-    QPdfWriter pdfWr(QString(filePathJson+"/%1.pdf").arg(m_patient));
+    QPdfWriter pdfWr(QString(filePathJson + "/%1.pdf").arg(m_patient));
     pdfWr.setCreator("Aura Innovative Robotics S.L.");
     pdfWr.setTitle(m_patient);
-    qDebug()<<"paso 2";
     pdfReportHelper pdfObj(pdfWr);
     //HEADER
     int hHead=30;
@@ -436,7 +434,6 @@ void pdfreport::newReport(QString filePathJson){
     if(headLogoIzq.isNull()){
         headLogoIzq.load("/home/oscann/Pictures/hm.jpg");
     }
-    qDebug()<<"paso 3";
     QImage headLogoAura;
     headLogoAura.load(":/qml/qtcam/videocapturefilter_QML/images/auralogo_16_9.png"); //Logo de aura en 16:9 en el qrc
     //FOOTER
@@ -455,7 +452,6 @@ void pdfreport::newReport(QString filePathJson){
     else
         reference = 'D';
 
-    qDebug()<<"paso 4";
     pdfObj.configHeader(hHead,paddingHead,headLogoIzq,headLogoAura);
     pdfObj.configFooter(hFoot,paddingFoot);
 
@@ -469,9 +465,10 @@ void pdfreport::newReport(QString filePathJson){
     qDebug() << "Step 1:";
     //QVector<int> patologias_estudiadas = {5,3,10};
     qDebug() << "resultados IA DEMENCIAS: " << json->getResultados_IA_demencias();
-    json->createJson();
-    json->writeJson();
+    //json->createJson();
+    //json->writeJson();
     QVector<int> patologias_estudiadas = json->getPathologies();//{2,5,3,10}; //HAY QUE AGREGAR LA LECTURA DEL JSON!! (se puede hacer desde fuera y considerar el vector un parámetro de la clase)
+    qDebug() << "patologias_estudiadas: " << patologias_estudiadas;
     qDebug() << "Step 2:";
     //QVector<bool> diferenciales = {1,1,0,0};
     QVector<bool> diferenciales = json->getIA_analysis();//{1,1,0,0};
@@ -479,7 +476,6 @@ void pdfreport::newReport(QString filePathJson){
     QVector<int> resultadosDemencias = json->getResultados_IA_demencias(); //{2,5,9,2,2,9};
     QVector<int> resultadosParkinson = json->getResultados_IA_parkinson(); //{3,1,3};
     int resultadoEHM = json->getResultados_IA_EHM(); //8;
-
 
     QStringList patologias;
     for (int i = 0; i < patologias_estudiadas.length(); i++) {
@@ -505,7 +501,8 @@ void pdfreport::newReport(QString filePathJson){
         patologias << "   Differential FTD vs MCI tasks";
     if (diferenciales[3])
         patologias << "   Differential PD vs PKS tasks";
-
+    qDebug() << "Step 4:";
+    qDebug() << "patologias: " << patologias;
     simpleList.append("OM Battery ID|"+patologias[0]);
     if(patologias.length()>1){
         for(int i = 1; i<patologias.length(); i++)
@@ -517,30 +514,50 @@ void pdfreport::newReport(QString filePathJson){
     //    if (patologias_estudiadas[i] == 2 | patologias_estudiadas[i] == 5 | patologias_estudiadas[i] == 9)
     //        n_demencias++;
     //}
-
-
-    QVector<int> seleccion = selectConclusion(patologias_estudiadas,diferenciales,resultadosDemencias,resultadosParkinson);
-    for (int i = 0; i < seleccion.length(); i++) {
-        if (seleccion[i] == 2)
-            simpleList.append("AD conclusion|"+ImprimeInformeControl(2,resultadosDemencias[0]));
-        else if (seleccion[i] == 5)
-            simpleList.append("DFT conclusion|"+ImprimeInformeControl(5,resultadosDemencias[1]));
-        else if (seleccion[i] == 9)
-            simpleList.append("DCL conclusion|"+ImprimeInformeControl(9,resultadosDemencias[2]));
-        else if (seleccion[i] == 25)
-            simpleList.append("Differential analysis: AD vs FTD|"+ImprimeInformeDiferencial(2,5,resultadosDemencias[3]));
-        else if (seleccion[i] == 29)
-            simpleList.append("Differential analysis: AD vs MCI|"+ImprimeInformeDiferencial(2,9,resultadosDemencias[4]));
-        else if (seleccion[i] == 59)
-            simpleList.append("Differential analysis: FTD vs MCI|"+ImprimeInformeDiferencial(5,9,resultadosDemencias[5]));
-        else if (seleccion[i] == 8)
-            simpleList.append("MHE conclusion|"+ImprimeInformeControl(8,resultadoEHM));
-        else if (seleccion[i] == 3)
-            simpleList.append("PD conclusion|"+ImprimeInformeControl(3,resultadosParkinson[0]));
-        else if (seleccion[i] == 10)
-            simpleList.append("PKS conclusion|"+ImprimeInformeControl(10,resultadosParkinson[1]));
-        else if (seleccion[i] == 310)
-            simpleList.append("Differential analysis: EP vs PKS|"+ImprimeInformeDiferencial(3,10,resultadosParkinson[2]));
+    qDebug() << "Step 5:";
+    QVector<bool> json_result_types = json->getResults_types();
+    bool differential = false;
+    if (json_result_types[2])
+    {
+        QVector<int> seleccion = selectConclusion(patologias_estudiadas,diferenciales,resultadosDemencias,resultadosParkinson);
+        for (int i = 0; i < seleccion.length(); i++) {
+            if (seleccion[i] == 2)
+                simpleList.append("AD conclusion|"+ImprimeInformeControl(2,resultadosDemencias[0]));
+            else if (seleccion[i] == 5)
+                simpleList.append("DFT conclusion|"+ImprimeInformeControl(5,resultadosDemencias[1]));
+            else if (seleccion[i] == 9)
+                simpleList.append("DCL conclusion|"+ImprimeInformeControl(9,resultadosDemencias[2]));
+            else if (seleccion[i] == 25)
+            {
+                simpleList.append("Differential analysis: AD vs FTD|"+ImprimeInformeDiferencial(2,5,resultadosDemencias[3]));
+                differential = true;
+            }
+            else if (seleccion[i] == 29)
+            {
+                simpleList.append("Differential analysis: AD vs MCI|"+ImprimeInformeDiferencial(2,9,resultadosDemencias[4]));
+                differential = true;
+            }
+            else if (seleccion[i] == 59)
+            {
+                simpleList.append("Differential analysis: FTD vs MCI|"+ImprimeInformeDiferencial(5,9,resultadosDemencias[5]));
+                differential = true;
+            }
+            else if (seleccion[i] == 8)
+                simpleList.append("MHE conclusion|"+ImprimeInformeControl(8,resultadoEHM));
+            else if (seleccion[i] == 3)
+                simpleList.append("PD conclusion|"+ImprimeInformeControl(3,resultadosParkinson[0]));
+            else if (seleccion[i] == 10)
+                simpleList.append("PKS conclusion|"+ImprimeInformeControl(10,resultadosParkinson[1]));
+            else if (seleccion[i] == 310)
+            {
+                simpleList.append("Differential analysis: EP vs PKS|"+ImprimeInformeDiferencial(3,10,resultadosParkinson[2]));
+                differential = true;
+            }
+        }
+    }
+    else
+    {
+        simpleList.append("Conclusion|Aid to diagnosis can not be applied due to missing tests.");
     }
     //TODO: Pablo's Number
     //simpleList.append("Asistencia Diferencial|0,8 EA");
@@ -549,7 +566,7 @@ void pdfreport::newReport(QString filePathJson){
     //Configurar titulo y pie de pagina antes de imprimir las hojas
     pdfObj.setHeaderTitle("ANÁLISIS DE MOVIMIENTO OCULAR");
     pdfObj.setFooterText(m_patient);
-    pdfObj.newPDF(pdfWr,tableGraphs,simpleList, false);
+    pdfObj.newPDF(pdfWr,tableGraphs,simpleList, false, differential);
 }
 
 QString pdfreport::validateDBElement(bsoncxx::document::element l){
@@ -590,7 +607,8 @@ QPair<QVector<QPixmap>, QPair<QVector<QStringList>, QVector<QStringList>>> pdfre
     QPair<QString, QStringList> pair;
 
     //mongocxx::client client(mongocxx::uri(QString("mongodb://oscann:CuevaErikSilviaPablo@%1:%2/?authSource=admin&authMechanism=SCRAM-SHA-1").arg(m_mongoUrl).arg(m_mongoPort).toLatin1().data()));
-    mongocxx::client client(mongocxx::uri("mongodb://localhost:27017"));
+	mongocxx::uri uri("mongodb://localhost:27017");
+	mongocxx::client client(uri);
     mongocxx::database db = client["datos"];
 
     std::ostringstream ssKey;
